@@ -1,0 +1,104 @@
+{
+  "kind": "offline_synthetic_demonstration",
+  "before": {
+    "name": "Ada",
+    "enabled": true
+  },
+  "examples": [
+    {
+      "intent": "keep_name",
+      "source": {
+        "enabled": false
+      },
+      "wire": {
+        "arguments": {
+          "name": {
+            "state": "absent"
+          },
+          "enabled": {
+            "state": "present",
+            "value": false
+          }
+        }
+      },
+      "decoded": {
+        "enabled": false
+      },
+      "after": {
+        "name": "Ada",
+        "enabled": false
+      }
+    },
+    {
+      "intent": "clear_name",
+      "source": {
+        "name": null,
+        "enabled": false
+      },
+      "wire": {
+        "arguments": {
+          "name": {
+            "state": "present",
+            "value": null
+          },
+          "enabled": {
+            "state": "present",
+            "value": false
+          }
+        }
+      },
+      "decoded": {
+        "name": null,
+        "enabled": false
+      },
+      "after": {
+        "enabled": false
+      }
+    },
+    {
+      "intent": "rename",
+      "source": {
+        "name": "Grace"
+      },
+      "wire": {
+        "arguments": {
+          "name": {
+            "state": "present",
+            "value": "Grace"
+          },
+          "enabled": {
+            "state": "absent"
+          }
+        }
+      },
+      "decoded": {
+        "name": "Grace"
+      },
+      "after": {
+        "name": "Grace",
+        "enabled": true
+      }
+    }
+  ],
+  "nullable_convention_collision": {
+    "keep_name_wire": {
+      "name": null,
+      "enabled": false
+    },
+    "clear_name_wire": {
+      "name": null,
+      "enabled": false
+    },
+    "if_null_is_kept": {
+      "enabled": false
+    },
+    "consequence": "Keeping null clears a name that was meant to be retained; stripping it would lose a requested clear."
+  },
+  "hostile_rejection": {
+    "code": "wire_invalid",
+    "path": "/arguments/name",
+    "detail": "Failed anyOf constraint"
+  },
+  "hostile_handler_calls": 0,
+  "model_calls": 0
+}

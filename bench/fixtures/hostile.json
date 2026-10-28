@@ -1,0 +1,174 @@
+[
+  {
+    "workflow": "patch",
+    "id": "missing_envelope",
+    "wire": {
+      "arguments": {
+        "id": "A",
+        "name": null,
+        "count": {
+          "state": "absent"
+        },
+        "enabled": {
+          "state": "absent"
+        }
+      }
+    }
+  },
+  {
+    "workflow": "patch",
+    "id": "absent_with_value",
+    "wire": {
+      "arguments": {
+        "id": "A",
+        "name": {
+          "state": "absent",
+          "value": null
+        },
+        "count": {
+          "state": "absent"
+        },
+        "enabled": {
+          "state": "absent"
+        }
+      }
+    }
+  },
+  {
+    "workflow": "patch",
+    "id": "missing_required",
+    "wire": {
+      "arguments": {
+        "name": {
+          "state": "absent"
+        },
+        "count": {
+          "state": "absent"
+        },
+        "enabled": {
+          "state": "absent"
+        }
+      }
+    }
+  },
+  {
+    "workflow": "patch",
+    "id": "invalid_value",
+    "wire": {
+      "arguments": {
+        "id": "A",
+        "name": {
+          "state": "present",
+          "value": 3
+        },
+        "count": {
+          "state": "absent"
+        },
+        "enabled": {
+          "state": "absent"
+        }
+      }
+    }
+  },
+  {
+    "workflow": "patch",
+    "id": "extra_root",
+    "wire": {
+      "arguments": {
+        "id": "A",
+        "name": {
+          "state": "absent"
+        },
+        "count": {
+          "state": "absent"
+        },
+        "enabled": {
+          "state": "absent"
+        }
+      },
+      "extra": 1
+    }
+  },
+  {
+    "workflow": "typed_map",
+    "id": "duplicate_map_key",
+    "wire": {
+      "arguments": {
+        "entries": [
+          {
+            "key": "a",
+            "value": 1
+          },
+          {
+            "key": "a",
+            "value": 2
+          }
+        ]
+      }
+    }
+  },
+  {
+    "workflow": "mixed_map",
+    "id": "declared_key_collision",
+    "wire": {
+      "arguments": {
+        "fields": {
+          "label": "A",
+          "note": {
+            "state": "absent"
+          }
+        },
+        "entries": [
+          {
+            "key": "label",
+            "value": 2
+          }
+        ]
+      }
+    }
+  },
+  {
+    "workflow": "oneof_overlap",
+    "id": "oneof_semantic_overlap",
+    "wire": {
+      "arguments": {
+        "variant": "0",
+        "value": 5
+      }
+    }
+  },
+  {
+    "workflow": "oneof_overlap",
+    "id": "unknown_variant",
+    "wire": {
+      "arguments": {
+        "variant": "99",
+        "value": 5
+      }
+    }
+  },
+  {
+    "workflow": "typed_map",
+    "id": "invalid_entry_value",
+    "wire": {
+      "arguments": {
+        "entries": [
+          {
+            "key": "a",
+            "value": "wrong"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "workflow": "patch",
+    "id": "duplicate_json_key",
+    "raw": "{\"arguments\":{\"id\":\"A\",\"id\":\"B\",\"name\":{\"state\":\"absent\"},\"count\":{\"state\":\"absent\"},\"enabled\":{\"state\":\"absent\"}}"
+  },
+  {
+    "workflow": "typed_map",
+    "id": "nonfinite_json",
+    "raw": "{\"arguments\":{\"entries\":[{\"key\":\"a\",\"value\":NaN}]}}"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "type": "module",
+  "description": "Offline comparator only; no provider calls",
+  "dependencies": {
+    "@mastra/schema-compat": "1.3.17",
+    "zod": "4.6.5"
+  }
+}
+

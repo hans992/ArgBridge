@@ -1,0 +1,523 @@
+[
+  {
+    "id": "patch",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "valid": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "A",
+        "name": null
+      },
+      {
+        "id": "A",
+        "name": ""
+      },
+      {
+        "id": "A",
+        "count": 0,
+        "enabled": false
+      },
+      {
+        "id": "A",
+        "name": "new",
+        "count": null,
+        "enabled": true
+      }
+    ],
+    "invalid": [
+      {},
+      {
+        "id": "A",
+        "name": 1
+      },
+      {
+        "id": "A",
+        "count": -1
+      },
+      {
+        "id": "A",
+        "enabled": null
+      },
+      {
+        "id": "A",
+        "extra": 1
+      }
+    ]
+  },
+  {
+    "id": "neutral",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "id",
+        "tags"
+      ],
+      "additionalProperties": false
+    },
+    "valid": [
+      {
+        "id": "A",
+        "tags": []
+      },
+      {
+        "id": "",
+        "tags": [
+          "x",
+          "y"
+        ]
+      }
+    ],
+    "invalid": [
+      {
+        "id": "A"
+      },
+      {
+        "id": 3,
+        "tags": []
+      },
+      {
+        "id": "A",
+        "tags": [
+          1
+        ]
+      },
+      {
+        "id": "A",
+        "tags": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "typed_map",
+    "schema": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "valid": [
+      {},
+      {
+        "revenue": 1.25,
+        "cost": 0
+      },
+      {
+        "": 0,
+        "a/b": 3,
+        "雪": 4
+      }
+    ],
+    "invalid": [
+      {
+        "x": "1"
+      },
+      {
+        "x": null
+      },
+      []
+    ]
+  },
+  {
+    "id": "mixed_map",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "label"
+      ],
+      "additionalProperties": {
+        "type": "integer"
+      }
+    },
+    "valid": [
+      {
+        "label": "A"
+      },
+      {
+        "label": "A",
+        "note": null,
+        "k": 0
+      },
+      {
+        "label": "A",
+        "note": "",
+        "entries": 2,
+        "fields": 3,
+        "state": 4,
+        "value": 5
+      }
+    ],
+    "invalid": [
+      {},
+      {
+        "label": 1
+      },
+      {
+        "label": "A",
+        "k": "x"
+      }
+    ]
+  },
+  {
+    "id": "nested",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "settings": {
+          "type": "object",
+          "properties": {
+            "zone": {
+              "type": "string",
+              "default": "UTC"
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "valid": [
+      {},
+      {
+        "settings": {}
+      },
+      {
+        "settings": {
+          "note": null
+        }
+      },
+      {
+        "settings": {
+          "zone": "",
+          "note": "x"
+        }
+      }
+    ],
+    "invalid": [
+      {
+        "settings": null
+      },
+      {
+        "settings": {
+          "zone": null
+        }
+      },
+      {
+        "settings": {
+          "unknown": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "optional_union",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ]
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "valid": [
+      {},
+      {
+        "target": ""
+      },
+      {
+        "target": 0
+      },
+      {
+        "target": 12
+      }
+    ],
+    "invalid": [
+      {
+        "target": null
+      },
+      {
+        "target": -1
+      },
+      {
+        "target": false
+      }
+    ]
+  },
+  {
+    "id": "local_ref",
+    "schema": {
+      "$defs": {
+        "a/b~c": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "type": "object",
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/a~1b~0c"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "valid": [
+      {},
+      {
+        "value": null
+      },
+      {
+        "value": "x"
+      }
+    ],
+    "invalid": [
+      {
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "array_records",
+    "schema": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "qty": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 4
+    },
+    "valid": [
+      [],
+      [
+        {
+          "code": "A"
+        }
+      ],
+      [
+        {
+          "code": "A",
+          "qty": 0
+        },
+        {
+          "code": "B",
+          "qty": 2
+        }
+      ]
+    ],
+    "invalid": [
+      [
+        {
+          "qty": 1
+        }
+      ],
+      [
+        {
+          "code": "A",
+          "qty": -1
+        }
+      ],
+      [
+        {
+          "code": "A",
+          "qty": null
+        }
+      ]
+    ]
+  },
+  {
+    "id": "nullable_map",
+    "schema": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": "integer"
+      }
+    },
+    "valid": [
+      null,
+      {},
+      {
+        "x": 0
+      }
+    ],
+    "invalid": [
+      {
+        "x": null
+      },
+      "x"
+    ]
+  },
+  {
+    "id": "scalar_enum",
+    "schema": {
+      "enum": [
+        false,
+        0,
+        "",
+        null,
+        "one"
+      ]
+    },
+    "valid": [
+      false,
+      0,
+      "",
+      null,
+      "one"
+    ],
+    "invalid": [
+      true,
+      1,
+      "two",
+      {}
+    ]
+  },
+  {
+    "id": "oneof_overlap",
+    "schema": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "number",
+          "maximum": 10
+        }
+      ]
+    },
+    "valid": [
+      -1,
+      11,
+      1.5
+    ],
+    "invalid": [
+      0,
+      5,
+      "x"
+    ]
+  },
+  {
+    "id": "required_null",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "x"
+      ],
+      "additionalProperties": false
+    },
+    "valid": [
+      {
+        "x": null
+      },
+      {
+        "x": ""
+      }
+    ],
+    "invalid": [
+      {},
+      {
+        "x": false
+      }
+    ]
+  }
+]

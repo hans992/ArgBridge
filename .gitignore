@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.hypothesis/
+*.egg-info/
+build/
+dist/
+node_modules/
+bench/results/local-*.json
+.env
+.env.*
+!.env.example
+evals/realworld/runs/
+evals/realworld/authorization*.json
+

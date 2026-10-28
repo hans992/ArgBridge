@@ -1,0 +1,118 @@
+[
+  {
+    "id": "untyped_open_object",
+    "schema": {
+      "type": "object"
+    }
+  },
+  {
+    "id": "unconstrained",
+    "schema": {}
+  },
+  {
+    "id": "pattern_keys",
+    "schema": {
+      "type": "object",
+      "patternProperties": {
+        "^x": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  {
+    "id": "dependencies",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "a": {
+          "type": "string"
+        },
+        "b": {
+          "type": "string"
+        }
+      },
+      "required": [],
+      "additionalProperties": false,
+      "dependentRequired": {
+        "a": [
+          "b"
+        ]
+      }
+    }
+  },
+  {
+    "id": "allof",
+    "schema": {
+      "allOf": [
+        {
+          "type": "string"
+        },
+        {
+          "enum": [
+            "x"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "recursive",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "next": {
+          "$ref": "#"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  {
+    "id": "remote_ref",
+    "schema": {
+      "$ref": "https://example.invalid/schema.json"
+    }
+  },
+  {
+    "id": "unknown_keyword",
+    "schema": {
+      "type": "string",
+      "customAssert": true
+    }
+  },
+  {
+    "id": "tuple",
+    "schema": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "string"
+        }
+      ],
+      "items": false
+    }
+  },
+  {
+    "id": "format",
+    "schema": {
+      "type": "string",
+      "format": "email"
+    }
+  },
+  {
+    "id": "unique_items",
+    "schema": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    }
+  },
+  {
+    "id": "false_schema",
+    "schema": false
+  }
+]

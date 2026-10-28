@@ -1,0 +1,14 @@
+{
+  "wheel": "argbridge_experiment-0.1.0-py3-none-any.whl",
+  "wheel_sha256": "51e359d2f385d7629d34fe737604f4d3e243b18b8ca98aeb1cb6d19259777d36",
+  "wheel_smoke_test": "passed; imports and presence/null round trips executed directly from wheel",
+  "entrypoint": "argbridge.cli:main",
+  "source_and_comparator_hashes": {
+    "src\\argbridge\\core.py": "10673f368cbd1e3824aaddab63edbb86076a87620cf1cb7f79d776688972f94b",
+    "src\\argbridge\\cli.py": "82b82796bddb358e059e2be1b9705e87415be2d575be98d2b38bb5863031153d",
+    "bench\\run.py": "aa2f75e81c2804423fbd1d1967025aad1169b214d8a0b6e62327d565eecd5be3",
+    "bench\\node\\compare.mjs": "ce3e569f7e82858b40de55c4eb7e9bd6db81be3500740e4039f7cf5ffb8c7c3e",
+    "bench\\node\\node_modules\\@mastra\\schema-compat\\dist\\index.js": "6050d2702b6c368a590c3c836860596801b5444a46f811bfa2fad31047ff3315",
+    "installed-openai/lib/_pydantic.py": "09fd2f1b0b9674d12e21483c58d4448d644602930e6e097c0e374b5387f98c07"
+  }
+}
