@@ -6,6 +6,8 @@ ArgBridge compiles a supported subset of JSON Schema into a closed-object, all-f
 
 [MIT license](LICENSE) · [Architecture and supported subset](docs/ARCHITECTURE.md) · [Offline benchmark](docs/BENCHMARK.md)
 
+[Real-provider evaluation protocol](evals/realworld/README.md) · [Current SDK comparison](docs/SDK_COMPARISON.md) · [Offline token measurements](docs/REALWORLD_EVALUATION.md)
+
 ## Status
 
 The deterministic codec and CLI are tested. Real-provider schema acceptance, model intent accuracy and inference costs have not yet been measured. This is not a production-readiness claim.
@@ -55,6 +57,8 @@ Input is UTF-8 JSON. Duplicate members and non-finite numbers are rejected. Expe
 
 ## Offline evidence
 
+The original codec benchmark records:
+
 - 56 tests passed, including 2,500 generated examples.
 - 40/40 workflow round trips were exact.
 - 36 invalid inputs and 12 hostile payloads were rejected.
@@ -86,4 +90,3 @@ A valid decoded argument can still represent the wrong user intent. Live model e
 Provide a minimal schema, source value, expected result and installed versions. Distinguish compilation, encoding, decoding and provider failures. Do not submit API keys, personal data or confidential customer contracts. Preserve benchmark fixtures and distinguish deterministic tests from provider-generated evidence.
 
 MIT licensed. Vendored datasets retain their original notices.
-

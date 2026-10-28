@@ -1,0 +1,1727 @@
+{
+  "kind": "offline_preparation",
+  "live_requests_made": 0,
+  "schema_acceptance": null,
+  "model_accuracy": null,
+  "generated_argument_tokens": null,
+  "end_to_end_latency": null,
+  "cost_per_correct_operation": null,
+  "plan_sha256": "9dd0cb4526f5d63f792b51147770e348cbc92ec66b312683fd49d58e06b00df0",
+  "model": "gpt-5.4-mini-2026-03-17",
+  "tokenizer": "o200k_base",
+  "tiktoken_version": "0.14.0",
+  "sdk_versions": {
+    "openai": "3.41.0",
+    "openai-agents": "0.24.0",
+    "mastra": "1.3.17"
+  },
+  "scheduled_requests": 995,
+  "probe_requests": 35,
+  "intent_requests": 960,
+  "scenario_count": 56,
+  "repetitions": 3,
+  "unsupported_cells": [
+    {
+      "workflow": "labels",
+      "method": "agents_strict",
+      "unsupported": "UserError",
+      "reason": "additionalProperties should not be set for object types. This could be because you're using an older version of Pydantic, or because you configured additional properties to be allowed. If you really need this, update the function or output tool to not use a strict schema."
+    }
+  ],
+  "schema_tokens": [
+    {
+      "workflow": "flat",
+      "method": "argbridge",
+      "strict": true,
+      "source_schema_content_tokens": 73,
+      "wire_schema_content_tokens": 358,
+      "wire_schema_bytes": 1620
+    },
+    {
+      "workflow": "flat",
+      "method": "argbridge_factored",
+      "strict": true,
+      "source_schema_content_tokens": 73,
+      "wire_schema_content_tokens": 296,
+      "wire_schema_bytes": 1231
+    },
+    {
+      "workflow": "flat",
+      "method": "manual_strict",
+      "strict": true,
+      "source_schema_content_tokens": 73,
+      "wire_schema_content_tokens": 173,
+      "wire_schema_bytes": 761
+    },
+    {
+      "workflow": "flat",
+      "method": "original_nonstrict",
+      "strict": false,
+      "source_schema_content_tokens": 73,
+      "wire_schema_content_tokens": 73,
+      "wire_schema_bytes": 324
+    },
+    {
+      "workflow": "flat",
+      "method": "agents_strict",
+      "strict": true,
+      "source_schema_content_tokens": 73,
+      "wire_schema_content_tokens": 79,
+      "wire_schema_bytes": 348
+    },
+    {
+      "workflow": "flat",
+      "method": "mastra_strict",
+      "strict": true,
+      "source_schema_content_tokens": 73,
+      "wire_schema_content_tokens": 119,
+      "wire_schema_bytes": 483
+    },
+    {
+      "workflow": "nested",
+      "method": "argbridge",
+      "strict": true,
+      "source_schema_content_tokens": 72,
+      "wire_schema_content_tokens": 534,
+      "wire_schema_bytes": 2418
+    },
+    {
+      "workflow": "nested",
+      "method": "argbridge_factored",
+      "strict": true,
+      "source_schema_content_tokens": 72,
+      "wire_schema_content_tokens": 375,
+      "wire_schema_bytes": 1474
+    },
+    {
+      "workflow": "nested",
+      "method": "manual_strict",
+      "strict": true,
+      "source_schema_content_tokens": 72,
+      "wire_schema_content_tokens": 213,
+      "wire_schema_bytes": 938
+    },
+    {
+      "workflow": "nested",
+      "method": "original_nonstrict",
+      "strict": false,
+      "source_schema_content_tokens": 72,
+      "wire_schema_content_tokens": 72,
+      "wire_schema_bytes": 316
+    },
+    {
+      "workflow": "nested",
+      "method": "agents_strict",
+      "strict": true,
+      "source_schema_content_tokens": 72,
+      "wire_schema_content_tokens": 82,
+      "wire_schema_bytes": 364
+    },
+    {
+      "workflow": "nested",
+      "method": "mastra_strict",
+      "strict": true,
+      "source_schema_content_tokens": 72,
+      "wire_schema_content_tokens": 144,
+      "wire_schema_bytes": 566
+    },
+    {
+      "workflow": "labels",
+      "method": "argbridge",
+      "strict": true,
+      "source_schema_content_tokens": 56,
+      "wire_schema_content_tokens": 326,
+      "wire_schema_bytes": 1504
+    },
+    {
+      "workflow": "labels",
+      "method": "argbridge_factored",
+      "strict": true,
+      "source_schema_content_tokens": 56,
+      "wire_schema_content_tokens": 326,
+      "wire_schema_bytes": 1504
+    },
+    {
+      "workflow": "labels",
+      "method": "manual_strict",
+      "strict": true,
+      "source_schema_content_tokens": 56,
+      "wire_schema_content_tokens": 166,
+      "wire_schema_bytes": 720
+    },
+    {
+      "workflow": "labels",
+      "method": "original_nonstrict",
+      "strict": false,
+      "source_schema_content_tokens": 56,
+      "wire_schema_content_tokens": 56,
+      "wire_schema_bytes": 275
+    },
+    {
+      "workflow": "labels",
+      "method": "mastra_strict",
+      "strict": true,
+      "source_schema_content_tokens": 56,
+      "wire_schema_content_tokens": 70,
+      "wire_schema_bytes": 319
+    },
+    {
+      "workflow": "ticket",
+      "method": "argbridge",
+      "strict": true,
+      "source_schema_content_tokens": 44,
+      "wire_schema_content_tokens": 63,
+      "wire_schema_bytes": 286
+    },
+    {
+      "workflow": "ticket",
+      "method": "argbridge_factored",
+      "strict": true,
+      "source_schema_content_tokens": 44,
+      "wire_schema_content_tokens": 63,
+      "wire_schema_bytes": 286
+    },
+    {
+      "workflow": "ticket",
+      "method": "manual_strict",
+      "strict": true,
+      "source_schema_content_tokens": 44,
+      "wire_schema_content_tokens": 44,
+      "wire_schema_bytes": 187
+    },
+    {
+      "workflow": "ticket",
+      "method": "original_nonstrict",
+      "strict": false,
+      "source_schema_content_tokens": 44,
+      "wire_schema_content_tokens": 44,
+      "wire_schema_bytes": 187
+    },
+    {
+      "workflow": "ticket",
+      "method": "agents_strict",
+      "strict": true,
+      "source_schema_content_tokens": 44,
+      "wire_schema_content_tokens": 44,
+      "wire_schema_bytes": 187
+    },
+    {
+      "workflow": "ticket",
+      "method": "mastra_strict",
+      "strict": true,
+      "source_schema_content_tokens": 44,
+      "wire_schema_content_tokens": 44,
+      "wire_schema_bytes": 187
+    }
+  ],
+  "reference_arguments": [
+    {
+      "scenario_id": "omission-01",
+      "method": "argbridge",
+      "reference_argument_tokens": 29,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-01",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 29,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-01",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-01",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-01",
+      "method": "agents_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-01",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-02",
+      "method": "argbridge",
+      "reference_argument_tokens": 30,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-02",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 30,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-02",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-02",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-02",
+      "method": "agents_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-02",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-03",
+      "method": "argbridge",
+      "reference_argument_tokens": 30,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-03",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 30,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-03",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-03",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-03",
+      "method": "agents_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-03",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-04",
+      "method": "argbridge",
+      "reference_argument_tokens": 27,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-04",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 27,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-04",
+      "method": "manual_strict",
+      "reference_argument_tokens": 4,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-04",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 1,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-04",
+      "method": "agents_strict",
+      "reference_argument_tokens": 1,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-04",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 1,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-05",
+      "method": "argbridge",
+      "reference_argument_tokens": 47,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-05",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 47,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-05",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-05",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-05",
+      "method": "agents_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-05",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-06",
+      "method": "argbridge",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-06",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-06",
+      "method": "manual_strict",
+      "reference_argument_tokens": 18,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-06",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-06",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-07",
+      "method": "argbridge",
+      "reference_argument_tokens": 29,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-07",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 29,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-07",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-07",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-07",
+      "method": "agents_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-07",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-08",
+      "method": "argbridge",
+      "reference_argument_tokens": 47,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-08",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 47,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-08",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-08",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-08",
+      "method": "agents_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "omission-08",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-01",
+      "method": "argbridge",
+      "reference_argument_tokens": 29,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-01",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 29,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-01",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-01",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-01",
+      "method": "agents_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-01",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-02",
+      "method": "argbridge",
+      "reference_argument_tokens": 30,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-02",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 30,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-02",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-02",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-02",
+      "method": "agents_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-02",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-03",
+      "method": "argbridge",
+      "reference_argument_tokens": 46,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-03",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 46,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-03",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-03",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-03",
+      "method": "agents_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-03",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-04",
+      "method": "argbridge",
+      "reference_argument_tokens": 47,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-04",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 47,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-04",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-04",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-04",
+      "method": "agents_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-04",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-05",
+      "method": "argbridge",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-05",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-05",
+      "method": "manual_strict",
+      "reference_argument_tokens": 14,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-05",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-05",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-06",
+      "method": "argbridge",
+      "reference_argument_tokens": 20,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-06",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 20,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-06",
+      "method": "manual_strict",
+      "reference_argument_tokens": 10,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-06",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-06",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-07",
+      "method": "argbridge",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-07",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-07",
+      "method": "manual_strict",
+      "reference_argument_tokens": 21,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-07",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 9,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-07",
+      "method": "agents_strict",
+      "reference_argument_tokens": 9,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-07",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 9,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-08",
+      "method": "argbridge",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-08",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-08",
+      "method": "manual_strict",
+      "reference_argument_tokens": 14,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-08",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "null-08",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-01",
+      "method": "argbridge",
+      "reference_argument_tokens": 35,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-01",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 35,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-01",
+      "method": "manual_strict",
+      "reference_argument_tokens": 29,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-01",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-01",
+      "method": "agents_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-01",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-02",
+      "method": "argbridge",
+      "reference_argument_tokens": 29,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-02",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 29,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-02",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-02",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-02",
+      "method": "agents_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-02",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-03",
+      "method": "argbridge",
+      "reference_argument_tokens": 29,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-03",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 29,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-03",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-03",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-03",
+      "method": "agents_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-03",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-04",
+      "method": "argbridge",
+      "reference_argument_tokens": 30,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-04",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 30,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-04",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-04",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-04",
+      "method": "agents_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-04",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-05",
+      "method": "argbridge",
+      "reference_argument_tokens": 14,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-05",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 14,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-05",
+      "method": "manual_strict",
+      "reference_argument_tokens": 12,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-05",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 12,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-05",
+      "method": "agents_strict",
+      "reference_argument_tokens": 12,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-05",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 12,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-06",
+      "method": "argbridge",
+      "reference_argument_tokens": 14,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-06",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 14,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-06",
+      "method": "manual_strict",
+      "reference_argument_tokens": 12,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-06",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 12,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-06",
+      "method": "agents_strict",
+      "reference_argument_tokens": 12,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-06",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 12,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-07",
+      "method": "argbridge",
+      "reference_argument_tokens": 30,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-07",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 30,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-07",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-07",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-07",
+      "method": "agents_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-07",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 5,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-08",
+      "method": "argbridge",
+      "reference_argument_tokens": 50,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-08",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 50,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-08",
+      "method": "manual_strict",
+      "reference_argument_tokens": 16,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-08",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 10,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-08",
+      "method": "agents_strict",
+      "reference_argument_tokens": 10,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "ordinary-08",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 10,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-01",
+      "method": "argbridge",
+      "reference_argument_tokens": 49,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-01",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 49,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-01",
+      "method": "manual_strict",
+      "reference_argument_tokens": 21,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-01",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-01",
+      "method": "agents_strict",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-01",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-02",
+      "method": "argbridge",
+      "reference_argument_tokens": 49,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-02",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 49,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-02",
+      "method": "manual_strict",
+      "reference_argument_tokens": 21,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-02",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-02",
+      "method": "agents_strict",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-02",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-03",
+      "method": "argbridge",
+      "reference_argument_tokens": 46,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-03",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 46,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-03",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-03",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-03",
+      "method": "agents_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-03",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-04",
+      "method": "argbridge",
+      "reference_argument_tokens": 49,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-04",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 49,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-04",
+      "method": "manual_strict",
+      "reference_argument_tokens": 21,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-04",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-04",
+      "method": "agents_strict",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-04",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-05",
+      "method": "argbridge",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-05",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-05",
+      "method": "manual_strict",
+      "reference_argument_tokens": 4,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-05",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 1,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-05",
+      "method": "agents_strict",
+      "reference_argument_tokens": 1,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-05",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 1,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-06",
+      "method": "argbridge",
+      "reference_argument_tokens": 49,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-06",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 49,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-06",
+      "method": "manual_strict",
+      "reference_argument_tokens": 21,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-06",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-06",
+      "method": "agents_strict",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-06",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-07",
+      "method": "argbridge",
+      "reference_argument_tokens": 47,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-07",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 47,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-07",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-07",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-07",
+      "method": "agents_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-07",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-08",
+      "method": "argbridge",
+      "reference_argument_tokens": 47,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-08",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 47,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-08",
+      "method": "manual_strict",
+      "reference_argument_tokens": 13,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-08",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-08",
+      "method": "agents_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "nested-08",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-01",
+      "method": "argbridge",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-01",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-01",
+      "method": "manual_strict",
+      "reference_argument_tokens": 18,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-01",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-01",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-02",
+      "method": "argbridge",
+      "reference_argument_tokens": 29,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-02",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 29,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-02",
+      "method": "manual_strict",
+      "reference_argument_tokens": 16,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-02",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 6,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-02",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 6,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-03",
+      "method": "argbridge",
+      "reference_argument_tokens": 35,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-03",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 35,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-03",
+      "method": "manual_strict",
+      "reference_argument_tokens": 22,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-03",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-03",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-04",
+      "method": "argbridge",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-04",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-04",
+      "method": "manual_strict",
+      "reference_argument_tokens": 18,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-04",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-04",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-05",
+      "method": "argbridge",
+      "reference_argument_tokens": 33,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-05",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 33,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-05",
+      "method": "manual_strict",
+      "reference_argument_tokens": 20,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-05",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 9,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-05",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 9,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-06",
+      "method": "argbridge",
+      "reference_argument_tokens": 48,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-06",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 48,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-06",
+      "method": "manual_strict",
+      "reference_argument_tokens": 41,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-06",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 16,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-06",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 16,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-07",
+      "method": "argbridge",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-07",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-07",
+      "method": "manual_strict",
+      "reference_argument_tokens": 18,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-07",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-07",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 7,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-08",
+      "method": "argbridge",
+      "reference_argument_tokens": 39,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-08",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 39,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-08",
+      "method": "manual_strict",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-08",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "dictionary-08",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 11,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "invalid-06",
+      "method": "argbridge",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "invalid-06",
+      "method": "argbridge_factored",
+      "reference_argument_tokens": 31,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "invalid-06",
+      "method": "manual_strict",
+      "reference_argument_tokens": 14,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "invalid-06",
+      "method": "original_nonstrict",
+      "reference_argument_tokens": 6,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "invalid-06",
+      "method": "agents_strict",
+      "reference_argument_tokens": 6,
+      "label": "deterministic_reference_not_model_output"
+    },
+    {
+      "scenario_id": "invalid-06",
+      "method": "mastra_strict",
+      "reference_argument_tokens": 6,
+      "label": "deterministic_reference_not_model_output"
+    }
+  ],
+  "original_corpus_schema_tokens": [
+    {
+      "workflow": "patch",
+      "source_schema_content_tokens": 54,
+      "original_wire_schema_content_tokens": 339,
+      "factored_wire_schema_content_tokens": 277,
+      "original_wire_bytes": 1510,
+      "factored_wire_bytes": 1121
+    },
+    {
+      "workflow": "neutral",
+      "source_schema_content_tokens": 45,
+      "original_wire_schema_content_tokens": 64,
+      "factored_wire_schema_content_tokens": 64,
+      "original_wire_bytes": 271,
+      "factored_wire_bytes": 271
+    },
+    {
+      "workflow": "typed_map",
+      "source_schema_content_tokens": 13,
+      "original_wire_schema_content_tokens": 78,
+      "factored_wire_schema_content_tokens": 78,
+      "original_wire_bytes": 357,
+      "factored_wire_bytes": 357
+    },
+    {
+      "workflow": "mixed_map",
+      "source_schema_content_tokens": 37,
+      "original_wire_schema_content_tokens": 205,
+      "factored_wire_schema_content_tokens": 205,
+      "original_wire_bytes": 917,
+      "factored_wire_bytes": 917
+    },
+    {
+      "workflow": "nested",
+      "source_schema_content_tokens": 52,
+      "original_wire_schema_content_tokens": 334,
+      "factored_wire_schema_content_tokens": 272,
+      "original_wire_bytes": 1516,
+      "factored_wire_bytes": 1127
+    },
+    {
+      "workflow": "optional_union",
+      "source_schema_content_tokens": 36,
+      "original_wire_schema_content_tokens": 210,
+      "factored_wire_schema_content_tokens": 210,
+      "original_wire_bytes": 927,
+      "factored_wire_bytes": 927
+    },
+    {
+      "workflow": "local_ref",
+      "source_schema_content_tokens": 48,
+      "original_wire_schema_content_tokens": 133,
+      "factored_wire_schema_content_tokens": 133,
+      "original_wire_bytes": 607,
+      "factored_wire_bytes": 607
+    },
+    {
+      "workflow": "array_records",
+      "source_schema_content_tokens": 52,
+      "original_wire_schema_content_tokens": 160,
+      "factored_wire_schema_content_tokens": 160,
+      "original_wire_bytes": 690,
+      "factored_wire_bytes": 690
+    },
+    {
+      "workflow": "nullable_map",
+      "source_schema_content_tokens": 16,
+      "original_wire_schema_content_tokens": 154,
+      "factored_wire_schema_content_tokens": 154,
+      "original_wire_bytes": 670,
+      "factored_wire_bytes": 670
+    },
+    {
+      "workflow": "scalar_enum",
+      "source_schema_content_tokens": 13,
+      "original_wire_schema_content_tokens": 43,
+      "factored_wire_schema_content_tokens": 43,
+      "original_wire_bytes": 176,
+      "factored_wire_bytes": 176
+    },
+    {
+      "workflow": "oneof_overlap",
+      "source_schema_content_tokens": 22,
+      "original_wire_schema_content_tokens": 108,
+      "factored_wire_schema_content_tokens": 108,
+      "original_wire_bytes": 456,
+      "factored_wire_bytes": 456
+    },
+    {
+      "workflow": "required_null",
+      "source_schema_content_tokens": 27,
+      "original_wire_schema_content_tokens": 46,
+      "factored_wire_schema_content_tokens": 46,
+      "original_wire_bytes": 208,
+      "factored_wire_bytes": 208
+    }
+  ],
+  "cost_estimate": {
+    "usd": 3.1006,
+    "estimated_input_tokens": 1077522,
+    "output_token_allowance": 509440,
+    "assumptions": "No cache discount. Local request-content tokens x1.25 +256 each; all outputs at the configured maximum. Hidden provider serialization is unmeasured; this is an estimate, not a quote."
+  }
+}

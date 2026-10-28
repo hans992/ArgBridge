@@ -40,7 +40,7 @@ Mastra's profile also moves some numeric/array constraints into descriptions. Th
 
 [OpenAI output](../bench/results/openai-sdk.json), [Mastra output and probes](../bench/results/mastra.json), package locks and file hashes make these observations reproducible. No historical SDK defect was substituted for the current version.
 
-MCP Inspector already provides portability linting. TanStack has schema-aware null-widening recovery. They were examined as documented alternatives, not timed or executed here. A handwritten tagged wrapper or an entry-list API can also preserve these semantics; this experiment demonstrates an automatic compiler/guard for its subset, not a novel mathematical encoding or defensible commercial moat.
+MCP Inspector already provides portability linting. TanStack has schema-aware null-widening recovery. They were examined as documented alternatives, not timed or executed here. A handwritten tagged wrapper or an entry-list API can also preserve these semantics; this experiment demonstrates an automatic compiler/guard for its subset. Tagged encodings themselves are established techniques.
 
 ## Latency and cost
 

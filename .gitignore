@@ -12,4 +12,4 @@ bench/results/local-*.json
 !.env.example
 evals/realworld/runs/
 evals/realworld/authorization*.json
-
+evals/realworld/artifacts/plan.json
