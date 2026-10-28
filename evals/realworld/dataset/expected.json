@@ -1,0 +1,403 @@
+{
+  "omission-01": {
+    "action": "apply_update",
+    "patch": {
+      "enabled": false
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "omission-02": {
+    "action": "apply_update",
+    "patch": {
+      "name": "Grace"
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "omission-03": {
+    "action": "apply_update",
+    "patch": {
+      "quota": 0
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "omission-04": {
+    "action": "apply_update",
+    "patch": {},
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "omission-05": {
+    "action": "apply_update",
+    "patch": {
+      "settings": {
+        "theme": "light"
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "omission-06": {
+    "action": "apply_update",
+    "patch": {
+      "labels": {
+        "region": "US"
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "omission-07": {
+    "action": "apply_update",
+    "patch": {
+      "enabled": false
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "omission-08": {
+    "action": "apply_update",
+    "patch": {
+      "settings": {
+        "timezone": "UTC"
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "null-01": {
+    "action": "apply_update",
+    "patch": {
+      "name": null
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "null-02": {
+    "action": "apply_update",
+    "patch": {
+      "quota": null
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "null-03": {
+    "action": "apply_update",
+    "patch": {
+      "settings": {
+        "nickname": null
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "null-04": {
+    "action": "apply_update",
+    "patch": {
+      "settings": {
+        "timezone": null
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "null-05": {
+    "action": "apply_update",
+    "patch": {
+      "labels": {
+        "tier": null
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "null-06": {
+    "action": "apply_update",
+    "patch": {
+      "labels": null
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "null-07": {
+    "action": "apply_update",
+    "patch": {
+      "name": null,
+      "enabled": false
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "null-08": {
+    "action": "apply_update",
+    "patch": {
+      "labels": {
+        "region": null
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "ordinary-01": {
+    "action": "apply_update",
+    "patch": {
+      "name": "Lin",
+      "quota": 12,
+      "enabled": true
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "ordinary-02": {
+    "action": "apply_update",
+    "patch": {
+      "name": ""
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "ordinary-03": {
+    "action": "apply_update",
+    "patch": {
+      "enabled": true
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "ordinary-04": {
+    "action": "apply_update",
+    "patch": {
+      "quota": 42
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "ordinary-05": {
+    "action": "apply_update",
+    "patch": {
+      "ticket_id": "T-7",
+      "priority": "high"
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "ordinary-06": {
+    "action": "apply_update",
+    "patch": {
+      "ticket_id": "T-7",
+      "priority": "low"
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "ordinary-07": {
+    "action": "apply_update",
+    "patch": {
+      "name": "null"
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "ordinary-08": {
+    "action": "apply_update",
+    "patch": {
+      "settings": {
+        "timezone": "Asia/Tokyo"
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "nested-01": {
+    "action": "apply_update",
+    "patch": {
+      "settings": {
+        "nickname": "Fox",
+        "alerts": false
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "nested-02": {
+    "action": "apply_update",
+    "patch": {
+      "settings": {
+        "nickname": null,
+        "theme": "light"
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "nested-03": {
+    "action": "apply_update",
+    "patch": {
+      "settings": {
+        "nickname": ""
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "nested-04": {
+    "action": "apply_update",
+    "patch": {
+      "settings": {
+        "timezone": "UTC",
+        "alerts": true
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "nested-05": {
+    "action": "apply_update",
+    "patch": {},
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "nested-06": {
+    "action": "apply_update",
+    "patch": {
+      "settings": {
+        "timezone": null,
+        "alerts": false
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "nested-07": {
+    "action": "apply_update",
+    "patch": {
+      "settings": {
+        "nickname": "雪"
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "nested-08": {
+    "action": "apply_update",
+    "patch": {
+      "settings": {
+        "timezone": "UTC"
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "dictionary-01": {
+    "action": "apply_update",
+    "patch": {
+      "labels": {
+        "department": "research"
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "dictionary-02": {
+    "action": "apply_update",
+    "patch": {
+      "labels": {
+        "": "blank"
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "dictionary-03": {
+    "action": "apply_update",
+    "patch": {
+      "labels": {
+        "a/b~c": "v1"
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "dictionary-04": {
+    "action": "apply_update",
+    "patch": {
+      "labels": {
+        "雪": "冬"
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "dictionary-05": {
+    "action": "apply_update",
+    "patch": {
+      "labels": {
+        "__proto__": "safe"
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "dictionary-06": {
+    "action": "apply_update",
+    "patch": {
+      "labels": {
+        "region": "APAC",
+        "tier": null,
+        "stage": "trial"
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "dictionary-07": {
+    "action": "apply_update",
+    "patch": {
+      "labels": {
+        "tier": ""
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "dictionary-08": {
+    "action": "apply_update",
+    "patch": {
+      "labels": {
+        "state": "null",
+        "value": "present"
+      }
+    },
+    "rationale": "Only the explicitly requested members change; omitted members are retained."
+  },
+  "ambiguous-01": {
+    "action": "request_clarification",
+    "rationale": "The field to clear is unspecified."
+  },
+  "ambiguous-02": {
+    "action": "request_clarification",
+    "rationale": "Nothing could mean removal or zero."
+  },
+  "ambiguous-03": {
+    "action": "request_clarification",
+    "rationale": "Contradictory requested boolean values."
+  },
+  "ambiguous-04": {
+    "action": "request_clarification",
+    "rationale": "No reset defaults or replacement values are specified."
+  },
+  "ambiguous-05": {
+    "action": "request_clarification",
+    "rationale": "No key identifies which label is old."
+  },
+  "ambiguous-06": {
+    "action": "request_clarification",
+    "rationale": "No ticket identifier or target priority supplied."
+  },
+  "ambiguous-07": {
+    "action": "request_clarification",
+    "rationale": "The desired name is unresolved."
+  },
+  "ambiguous-08": {
+    "action": "request_clarification",
+    "rationale": "Contradictory values for the same key."
+  },
+  "invalid-01": {
+    "action": "reject_request",
+    "rationale": "Quota must be nonnegative."
+  },
+  "invalid-02": {
+    "action": "reject_request",
+    "rationale": "Enabled is not nullable."
+  },
+  "invalid-03": {
+    "action": "reject_request",
+    "rationale": "Theme is not in the allowed enum."
+  },
+  "invalid-04": {
+    "action": "reject_request",
+    "rationale": "Undeclared member."
+  },
+  "invalid-05": {
+    "action": "reject_request",
+    "rationale": "Label values cannot be numbers."
+  },
+  "invalid-06": {
+    "action": "apply_update",
+    "patch": {
+      "name": "Nia"
+    },
+    "rationale": "Quoted note is untrusted data, not a requested mutation."
+  },
+  "invalid-07": {
+    "action": "reject_request",
+    "rationale": "Labels must be an object or null."
+  },
+  "invalid-08": {
+    "action": "reject_request",
+    "rationale": "Settings itself is not nullable."
+  }
+}

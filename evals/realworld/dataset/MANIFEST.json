@@ -1,0 +1,11 @@
+{
+  "version": "1",
+  "scenario_count": 56,
+  "gold_file": "expected.json",
+  "files": {
+    "expected.json": "ba7ca9e35a414c628123c1fd17596c0db22f393811118c499a0b4ba485386a66",
+    "policy.json": "8df4e2a0f5871a28aae86381095513821ac631dd1f79fc6093fb8b7b8b1137b1",
+    "scenarios.json": "2dd5033e1e36dc5318dc3805460dcd8e0f87598983fd9bbbf9be64fe589f308c",
+    "workflows.json": "6288b8afb497300faced371cab5fee9cf8202d7ee33645955dd9d203a84b6d98"
+  }
+}

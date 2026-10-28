@@ -1,0 +1,136 @@
+{
+  "flat": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "User-facing name. Null removes the name."
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "quota": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Nonnegative quota. Null removes the limit; zero is a real limit."
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "initial": {
+      "name": "Ada",
+      "enabled": true,
+      "quota": 7
+    }
+  },
+  "nested": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "settings": {
+          "type": "object",
+          "properties": {
+            "nickname": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "theme": {
+              "type": "string",
+              "enum": [
+                "light",
+                "dark"
+              ]
+            },
+            "timezone": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "alerts": {
+              "type": "boolean"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "initial": {
+      "settings": {
+        "nickname": "Ace",
+        "theme": "dark",
+        "timezone": "Europe/Berlin",
+        "alerts": true
+      }
+    }
+  },
+  "labels": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "labels": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "description": "Merge supplied label keys; null value removes a key; null labels removes the whole labels member."
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "initial": {
+      "labels": {
+        "region": "EU",
+        "tier": "standard",
+        "keep": "yes"
+      }
+    }
+  },
+  "ticket": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "ticket_id": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "low",
+            "normal",
+            "high"
+          ]
+        }
+      },
+      "required": [
+        "ticket_id",
+        "priority"
+      ],
+      "additionalProperties": false
+    },
+    "initial": {
+      "ticket_id": "T-7",
+      "priority": "normal"
+    }
+  }
+}
