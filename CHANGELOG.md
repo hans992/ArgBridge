@@ -9,6 +9,7 @@ Initial developer-facing alpha, prepared from the published research snapshot.
 - Bound expanded wire schemas after compilation; previously a small source with repeated long descriptions could exceed the JSON budget.
 - Check serialized bundles against their own reader's budget before returning them.
 - Bound CLI file reads before parsing and make non-ASCII JSON output usable on legacy Windows consoles.
+- Keep serialized CLI output inside the reader's byte limit, including formatting, ASCII escaping and any trailing newline; use compact JSON near the limit and reject oversized stdout output before emission.
 - Declare the directly imported `referencing` dependency explicitly.
 - Escape unsupported keyword names correctly in JSON Pointer error paths.
 - Initialize the CI tokenizer cache inside a runner step; the runner context is unavailable in job-level environment expressions.

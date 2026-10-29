@@ -57,6 +57,6 @@ argbridge encode bundle.json source-arguments.json --out wire.json
 argbridge decode bundle.json wire.json
 ```
 
-`python -m argbridge` is equivalent. Input is UTF-8 JSON; an initial UTF-8 BOM is accepted. Files are read through a 1,000,000-byte limit. `--out` writes UTF-8 with LF newlines; stdout uses ASCII JSON escapes so Unicode values work on legacy terminals. Success exits 0; expected errors write JSON to stderr and exit 2. Argument-parser usage errors also exit 2. The CLI never uses credentials, opens a network connection or invokes a handler.
+`python -m argbridge` is equivalent. Input is UTF-8 JSON; an initial UTF-8 BOM is accepted. Files are read through a 1,000,000-byte limit. `--out` writes UTF-8 with LF newlines; stdout uses ASCII JSON escapes so Unicode values work on legacy terminals. Output falls back to compact JSON near the same byte limit, including the trailing newline only when it fits. If ASCII escaping still exceeds the budget, stdout is rejected before emission with `resource_limit`; use `--out` for the more compact UTF-8 representation. Success exits 0; expected errors write JSON to stderr and exit 2. Argument-parser usage errors also exit 2. The CLI never uses credentials, opens a network connection or invokes a handler.
 
 `canonical(value)` serializes JSON deterministically for this implementation; it is not RFC 8785 canonicalization. `strict_profile(schema)` is an expert diagnostic for emitted wire schemas, not a general schema validator or a replacement for provider testing.

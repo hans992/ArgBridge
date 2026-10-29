@@ -17,6 +17,23 @@ def read(path):
     return loads(raw.decode("utf-8-sig"))
 
 
+def _render_output(value, *, ascii_only):
+    rendered = json.dumps(value, ensure_ascii=ascii_only, allow_nan=False, indent=2)
+    if len(rendered.encode("utf-8")) + 1 > MAX_BYTES:
+        rendered = json.dumps(
+            value, ensure_ascii=ascii_only, allow_nan=False, separators=(",", ":")
+        )
+    size = len(rendered.encode("utf-8"))
+    if size > MAX_BYTES:
+        raise BridgeError(
+            "resource_limit",
+            "",
+            "Serialized CLI output exceeds JSON byte budget; use --out for UTF-8 JSON",
+        )
+    # Include a trailing newline only when it also fits the file reader's budget.
+    return rendered + ("\n" if size < MAX_BYTES else "")
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--version", action="version", version=f"argbridge {__version__}")
@@ -36,12 +53,12 @@ def main(argv=None):
         else:
             compiled = Compiled.from_bundle(read(args.bundle))
             result = getattr(compiled, args.command)(read(args.input))
-        rendered = json.dumps(result, ensure_ascii=False, allow_nan=False, indent=2) + "\n"
+        rendered = _render_output(result, ascii_only=not args.out)
         if args.out:
             Path(args.out).write_bytes(rendered.encode("utf-8"))
         else:
             # ASCII JSON is valid UTF-8 and also works on legacy Windows consoles.
-            print(json.dumps(result, ensure_ascii=True, allow_nan=False, indent=2))
+            print(rendered, end="")
     except BridgeError as exc:
         print(json.dumps({"error": exc.as_dict()}), file=sys.stderr)
         return 2

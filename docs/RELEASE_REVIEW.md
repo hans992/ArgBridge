@@ -4,6 +4,8 @@ Prepared 29 October 2026 from research snapshot `a9cd459c8cd58624af8102e1dc714c8
 
 Hosted verification followed the local review: all 13 CI jobs passed at commit `3f4eadf` after correcting a workflow startup error. [CI results and exact scope](CI_RESULTS.md). The local preparation records below retain their original observations.
 
+The final PR review subsequently found a CLI serialization boundary defect: indentation, a newline or ASCII escaping could make output exceed the reader's byte budget. Three regressions failed before the correction. The CLI now falls back to compact JSON near the limit and rejects oversized ASCII output before emission. This changes serialization bounds, not the codec wire format. The historical test counts below describe their named checkpoint; current PR checks cover the additional cases.
+
 ## Scope and disposition
 
 The review covered the complete runtime, public exports, CLI, schema subset, transformation/validation boundaries, evaluation harness, tests, dependency metadata, packaging and examples. It also reproduced the historical offline benchmark from a disposable checkout. The useful scope remains a bounded, reusable transport codec for strict tools whose original contracts need member presence or typed maps. It is not a general converter, agent framework or model-accuracy improvement.

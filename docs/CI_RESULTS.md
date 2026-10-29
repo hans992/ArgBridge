@@ -2,7 +2,7 @@
 
 On 29 October 2026, [run 40846877084](https://github.com/hans992/ArgBridge/actions/runs/40846877084) completed successfully for commit `3f4eadf5139c44099a8eb48c27682a3e434d38ec` on `release/0.1.0a1`. All **13 expected jobs** passed; none was skipped or cancelled. [Machine-readable checkpoint](../bench/results/release-0.1.0a1/ci-checkpoint.json).
 
-This page records that exact checkpoint. Any later commit needs its own successful run before release; the [branch's Actions history](https://github.com/hans992/ArgBridge/actions?query=branch%3Arelease%2F0.1.0a1) shows current results.
+This page records that exact checkpoint, not every later release-branch change. Any later commit needs its own successful run before release; [PR #1 checks](https://github.com/hans992/ArgBridge/pull/1/checks) and the [branch's Actions history](https://github.com/hans992/ArgBridge/actions?query=branch%3Arelease%2F0.1.0a1) show current results. The final PR review added three CLI byte-boundary regressions after this checkpoint; current core/evaluation counts are 84 and 29 (113 total), and the final review must cite the exact head and run that tested them.
 
 ## What passed
 
