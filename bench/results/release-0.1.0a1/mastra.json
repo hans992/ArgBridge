@@ -1,0 +1,376 @@
+{
+  "comparator": "@mastra/schema-compat",
+  "version": "1.3.17",
+  "mode": "OpenAISchemaCompatLayer.processToJSONSchema(StandardSchemaWithJSON)",
+  "note": "Offline schema conversion only. Pass-through Standard Schema validator supplies the JSON schema; Python jsonschema independently validates emitted schemas.",
+  "results": [
+    {
+      "id": "patch",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "count": {
+            "description": "constraints: greater than or equal to 0",
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "enabled": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "count",
+          "enabled"
+        ],
+        "additionalProperties": false,
+        "x-optional": [
+          "name",
+          "count",
+          "enabled"
+        ]
+      }
+    },
+    {
+      "id": "neutral",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "constraints: maximum length 3"
+          }
+        },
+        "required": [
+          "id",
+          "tags"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "typed_map",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": []
+      }
+    },
+    {
+      "id": "mixed_map",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "label",
+          "note"
+        ],
+        "additionalProperties": false,
+        "x-optional": [
+          "note"
+        ]
+      }
+    },
+    {
+      "id": "nested",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "settings": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "zone": {
+                    "default": "UTC",
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "default": "UTC"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "note": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "zone",
+                  "note"
+                ],
+                "additionalProperties": false,
+                "x-optional": [
+                  "zone",
+                  "note"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "settings"
+        ],
+        "additionalProperties": false,
+        "x-optional": [
+          "settings"
+        ]
+      }
+    },
+    {
+      "id": "optional_union",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer",
+                "description": "constraints: greater than or equal to 0"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "target"
+        ],
+        "additionalProperties": false,
+        "x-optional": [
+          "target"
+        ]
+      }
+    },
+    {
+      "id": "local_ref",
+      "schema": {
+        "$defs": {
+          "a/b~c": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object",
+        "properties": {
+          "value": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/a~1b~0c"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "value"
+        ],
+        "additionalProperties": false,
+        "x-optional": [
+          "value"
+        ]
+      }
+    },
+    {
+      "id": "array_records",
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "qty": {
+              "description": "constraints: greater than or equal to 0",
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "description": "constraints: greater than or equal to 0"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "code",
+            "qty"
+          ],
+          "additionalProperties": false,
+          "x-optional": [
+            "qty"
+          ]
+        },
+        "description": "constraints: minimum length 0, maximum length 4"
+      }
+    },
+    {
+      "id": "nullable_map",
+      "schema": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "additionalProperties": false,
+        "required": []
+      }
+    },
+    {
+      "id": "scalar_enum",
+      "schema": {
+        "anyOf": [
+          {
+            "enum": [
+              false,
+              0,
+              "",
+              null,
+              "one"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    {
+      "id": "oneof_overlap",
+      "schema": {
+        "anyOf": [
+          {
+            "oneOf": [
+              {
+                "type": "integer",
+                "description": "constraints: greater than or equal to 0"
+              },
+              {
+                "type": "number",
+                "description": "constraints: lower than or equal to 10"
+              }
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ]
+      }
+    },
+    {
+      "id": "required_null",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "x"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ],
+  "normalizer_probes": [
+    {
+      "workflow": "patch",
+      "input": {
+        "id": "A",
+        "name": null
+      },
+      "output_after_json_serialization": {
+        "id": "A"
+      },
+      "undefined_members": [
+        "name"
+      ],
+      "null_members": []
+    },
+    {
+      "workflow": "required_null",
+      "input": {
+        "x": null
+      },
+      "output_after_json_serialization": {
+        "x": null
+      },
+      "undefined_members": [],
+      "null_members": [
+        "x"
+      ]
+    }
+  ]
+}

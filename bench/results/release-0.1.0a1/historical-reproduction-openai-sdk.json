@@ -1,0 +1,258 @@
+{
+  "comparator": "openai.lib._pydantic._ensure_strict_json_schema",
+  "version": "3.40.0",
+  "private_helper": true,
+  "note": "Direct schema helper invocation. Not a benchmark of the full SDK or a promise that its public API accepts arbitrary JSON Schema.",
+  "results": [
+    {
+      "id": "patch",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "count": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "count",
+          "enabled"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "neutral",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 3
+          }
+        },
+        "required": [
+          "id",
+          "tags"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "typed_map",
+      "schema": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number"
+        }
+      }
+    },
+    {
+      "id": "mixed_map",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "note": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "label",
+          "note"
+        ],
+        "additionalProperties": {
+          "type": "integer"
+        }
+      }
+    },
+    {
+      "id": "nested",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "settings": {
+            "type": "object",
+            "properties": {
+              "zone": {
+                "type": "string",
+                "default": "UTC"
+              },
+              "note": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "zone",
+              "note"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "settings"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "optional_union",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ]
+          }
+        },
+        "required": [
+          "target"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "local_ref",
+      "schema": {
+        "$defs": {
+          "a/b~c": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/$defs/a~1b~0c"
+          }
+        },
+        "required": [
+          "value"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "id": "array_records",
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "qty": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "code",
+            "qty"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 0,
+        "maxItems": 4
+      }
+    },
+    {
+      "id": "nullable_map",
+      "schema": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "additionalProperties": {
+          "type": "integer"
+        }
+      }
+    },
+    {
+      "id": "scalar_enum",
+      "schema": {
+        "enum": [
+          false,
+          0,
+          "",
+          null,
+          "one"
+        ]
+      }
+    },
+    {
+      "id": "oneof_overlap",
+      "schema": {
+        "oneOf": [
+          {
+            "type": "integer",
+            "minimum": 0
+          },
+          {
+            "type": "number",
+            "maximum": 10
+          }
+        ]
+      }
+    },
+    {
+      "id": "required_null",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "x"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

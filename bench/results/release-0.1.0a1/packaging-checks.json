@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-29",
+  "python": "3.12.14",
+  "platform": "Windows 11",
+  "build": "wheel built from sdist using build 1.6.1 and setuptools 84.2.1",
+  "twine_strict": "passed",
+  "clean_wheel_install": "passed",
+  "isolated_import": "passed",
+  "quickstart_presence_roundtrips": 3,
+  "cli_version": "0.1.0a1",
+  "extracted_sdist_core_tests": {
+    "passed": 81,
+    "deselected": 29
+  },
+  "yaml_parse": "passed; not hosted execution",
+  "ruff": "runtime, examples and release scripts passed check and format",
+  "local_document_links": "passed",
+  "inference_calls": 0,
+  "external_publication": "not performed",
+  "notes": [
+    "Archive digests are supplied outside the source archive to avoid self-reference.",
+    "Tests of the extracted source preceded documentation-only packaging-report updates."
+  ],
+  "offline_preparation": {
+    "status": "passed",
+    "live_requests_made": 0,
+    "scheduled_requests": 995,
+    "plan_sha256": "9cc1feb9db15ee12923722726675515953ca5394a2d8468fc9a1f5effc069c2e",
+    "authorization": "disabled; not approved for another run"
+  }
+}

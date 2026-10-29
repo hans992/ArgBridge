@@ -35,17 +35,21 @@ Conservative refusals include implicit/unconstrained types, boolean schemas, unt
 ## Implementation
 
 - src/argbridge/core.py: compilation, resource limits, JSON parsing, wire checks, original contract guard and bundle verification.
-- src/argbridge/cli.py: compile/encode/decode file interface.
+- src/argbridge/cli.py and __main__.py: bounded compile/encode/decode file interface and module entry point.
+- examples/quickstart.py: the three presence states without external dependencies beyond the core package.
+- examples/openai_tool.py: offline request preview and explicitly gated Responses API example; returns a proposal without applying it.
 - examples/demo.py: in-memory update semantics and rejection demonstration.
 - bench/run.py: independent reference validation, baselines, installed SDK helper, exclusions, timings and sizes.
 - bench/node/compare.mjs: pinned current Mastra conversion and normalizer observations.
 - tests/test_contracts.py: frozen fixtures, independent suite assertions, generated contracts, mutation tests and CLI behavior.
+- tests/test_release.py: resource, Unicode, module-entry and diagnostic regressions.
+- bench/manual_wrapper.py and release_compare.py: revised explicit-path control, evaluated separately from the historical live baseline.
 
 Runtime source and wire schemas are defensively copied. Bundles are recomputed, not executed as supplied transformation plans. External reference retrieval is disabled.
 
 ## Resource and trust limits
 
-JSON is bounded to 1 MB, 20,000 nodes and depth 64; compilation has a 4,000-node expansion budget and depth bound. Emitted wire schemas are checked against a conservative local profile with ten container levels, 5,000 properties, 1,000 enum values and documented character budgets.
+JSON is bounded to 1,000,000 bytes, 20,000 nodes and depth 64; compilation has a 4,000-node expansion budget and depth bound. The same JSON budgets now apply to expanded wire schemas and returned bundles, so a compiler result cannot silently exceed its own loader budget. The CLI reads at most the byte limit plus one before parsing. Emitted wire schemas are also checked against a conservative local profile with ten container levels, 5,000 properties, 1,000 enum values and documented character budgets.
 
 The local profile implements a subset of the provider documentation, not the provider's parser. It may conservatively refuse shapes a provider accepts. The live evaluation established acceptance of the twelve original benchmark wire schemas and four workflow schemas for one OpenAI model snapshot; acceptance of other emitted schemas remains unverified.
 

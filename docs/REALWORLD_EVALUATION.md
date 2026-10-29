@@ -1,5 +1,7 @@
 # Live provider evaluation — 29 October 2026
 
+Historical evaluation of the frozen research implementation. The alpha release improves packaging and developer experience without changing these measurements or claiming live results for its new example.
+
 **Engineering decision: retain ArgBridge as a research project.** The codec is correct on its deterministic tests, and the real provider accepted the submitted schemas. This run did not demonstrate a model-reliability, latency or cost advantage over original non-strict tools with local validation. Further product features are not justified by these results.
 
 The strongest observed control achieved 162/168 correct intents (96.4%), versus 153/168 (91.1%) for ArgBridge and 155/168 (92.3%) for its factored schema. ArgBridge cost 46.1% more per correctly completed intent and had higher median latency. All three still made intent errors; none is established as production-safe by this sample.

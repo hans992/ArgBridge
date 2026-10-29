@@ -1,5 +1,7 @@
 # Offline benchmark â€” 28 October 2026
 
+This is the historical offline record. New release measurements and reproduction results are in [the alpha review](RELEASE_REVIEW.md); [reproduction instructions](REPRODUCING.md) keep new outputs separate from the frozen evidence.
+
 ## Result
 
 The offline benchmark passed on the selected subset. The full machine-readable record is [benchmark.json](../bench/results/benchmark.json); comparator outputs, tests and demo are alongside it.

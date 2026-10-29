@@ -38,6 +38,16 @@ The handwritten strict operation-list wrapper preserves the frozen scenarios' in
 
 ArgBridge's automatic compilation may reduce per-contract wrapper work, but that engineering convenience is not a measured model advantage. The completed paired live evaluation found no accuracy or cost advantage over original non-strict tools with validation. Its handwritten strict control has a documented nested-mapping limitation, so the run cannot rank ArgBridge against a fully specified strict wrapper.
 
+## Release comparator: explicit paths, offline only
+
+The alpha candidate adds `bench/manual_wrapper.py`. It names nested fields using exact JSON Pointer paths such as `/settings/timezone`, distinguishes empty objects from omission, preserves nullable map values and rejects duplicate or overlapping operations. It is deliberately handwritten for four fixed contracts.
+
+Both it and ArgBridge restore all 41 frozen update patches in deterministic tests. Across these four workflow schemas, the manual wrapper uses 817 canonical JSON content tokens, versus 1,281 for ArgBridge. Across the 41 reference outputs, it uses 731 content tokens versus 1,421. These are tokenizer measurements of deterministic encodings, **not model-generated arguments, billed usage, acceptance or accuracy**. The required-fields control needs no manual wrapper at all.
+
+[Reproduction data](../bench/results/release-0.1.0a1/manual-comparison.json) comes from `bench/release_compare.py`. The old model experiment remains untouched. Its manual score must not be attributed to this revised implementation.
+
+Integration tradeoff: ArgBridge builds a codec from each supported schema and keeps transport logic generic. The manual alternative requires per-workflow operation schemas and mapping/validation code, but is smaller and makes domain operations explicit. Current SDK converters require less application code when their native semantics are suitable. None of these implementation choices establishes a universal winner.
+
 ## Sources for the live configuration
 
 - [OpenAI function calling](https://developers.openai.com/api/docs/guides/function-calling): strict requirements and explicit non-strict mode.

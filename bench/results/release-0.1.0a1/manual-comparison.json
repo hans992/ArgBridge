@@ -1,0 +1,109 @@
+{
+  "kind": "offline reference roundtrips and content token counts",
+  "inference_calls": 0,
+  "live_provider_acceptance_tested": false,
+  "model_accuracy_measured": false,
+  "encoding": "o200k_base",
+  "note": "The expected patches are inputs, not model predictions. Counts are not billed usage. This revised manual arm is not the historical live arm.",
+  "exact_reference_roundtrips_each": 41,
+  "workflows": [
+    {
+      "workflow": "flat",
+      "exact_reference_roundtrips_each": 14,
+      "source_schema": {
+        "bytes": 324,
+        "tokens": 73
+      },
+      "argbridge_schema": {
+        "bytes": 1620,
+        "tokens": 358
+      },
+      "manual_schema": {
+        "bytes": 1077,
+        "tokens": 239
+      },
+      "reference_argument_content_tokens_sum": {
+        "argbridge": 419,
+        "manual": 214,
+        "original": 79
+      },
+      "argbridge_wire_sha256": "44b956e0797850e44a87e224e3387db313fde095d78c27c82f3b6ebe11370dc5"
+    },
+    {
+      "workflow": "nested",
+      "exact_reference_roundtrips_each": 13,
+      "source_schema": {
+        "bytes": 316,
+        "tokens": 72
+      },
+      "argbridge_schema": {
+        "bytes": 2418,
+        "tokens": 534
+      },
+      "manual_schema": {
+        "bytes": 1510,
+        "tokens": 337
+      },
+      "reference_argument_content_tokens_sum": {
+        "argbridge": 584,
+        "manual": 241,
+        "original": 104
+      },
+      "argbridge_wire_sha256": "aa6fa9214b83a7adcbda445071209dfec70bffe4fd71c7c75c2b321dddb8598f"
+    },
+    {
+      "workflow": "labels",
+      "exact_reference_roundtrips_each": 12,
+      "source_schema": {
+        "bytes": 275,
+        "tokens": 56
+      },
+      "argbridge_schema": {
+        "bytes": 1504,
+        "tokens": 326
+      },
+      "manual_schema": {
+        "bytes": 906,
+        "tokens": 197
+      },
+      "reference_argument_content_tokens_sum": {
+        "argbridge": 390,
+        "manual": 252,
+        "original": 100
+      },
+      "argbridge_wire_sha256": "69d147dcf877eb1b3e03a4277c1e4c35132819f9006189adfbd1b398845a30b4"
+    },
+    {
+      "workflow": "ticket",
+      "exact_reference_roundtrips_each": 2,
+      "source_schema": {
+        "bytes": 187,
+        "tokens": 44
+      },
+      "argbridge_schema": {
+        "bytes": 286,
+        "tokens": 63
+      },
+      "manual_schema": {
+        "bytes": 187,
+        "tokens": 44
+      },
+      "reference_argument_content_tokens_sum": {
+        "argbridge": 28,
+        "manual": 24,
+        "original": 24
+      },
+      "argbridge_wire_sha256": "1896694506922b64c121b9d7f03f4ac5bf7f658411734ae5eb669c85b0480b43"
+    }
+  ],
+  "source_hashes": {
+    "bench/manual_wrapper.py": "c68736a3d5ed94421f06bf02094668adcae8aefe23891a9586455caeb73631e2",
+    "bench/release_compare.py": "388bd245b639f2db8a200dd22f4e55517b7c482fad08bf51d6954109c5636cb7",
+    "src/argbridge/core.py": "1f6dbd74a998b3fd095f508219986846fe8dedff0a13c43e8d6e1b77d819cea3",
+    "evals/realworld/dataset/expected.json": "ba7ca9e35a414c628123c1fd17596c0db22f393811118c499a0b4ba485386a66",
+    "evals/realworld/dataset/MANIFEST.json": "acfd4ef3d84e5b7e3bbe98bc553d48126bc314cfc2117c12c0dc7022e26a3064",
+    "evals/realworld/dataset/policy.json": "8df4e2a0f5871a28aae86381095513821ac631dd1f79fc6093fb8b7b8b1137b1",
+    "evals/realworld/dataset/scenarios.json": "2dd5033e1e36dc5318dc3805460dcd8e0f87598983fd9bbbf9be64fe589f308c",
+    "evals/realworld/dataset/workflows.json": "6288b8afb497300faced371cab5fee9cf8202d7ee33645955dd9d203a84b6d98"
+  }
+}

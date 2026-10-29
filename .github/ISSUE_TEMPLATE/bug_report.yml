@@ -1,0 +1,35 @@
+name: Reproducible bug
+description: A codec, CLI or documented-example defect with synthetic inputs.
+body:
+  - type: markdown
+    attributes:
+      value: "For security issues, follow SECURITY.md. Do not paste API keys, personal data or customer schemas."
+  - type: input
+    id: versions
+    attributes:
+      label: Versions and platform
+      description: ArgBridge, Python, jsonschema and OS versions.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal synthetic reproduction
+      description: Include the schema, input and exact command or Python code.
+      render: python
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+      description: Include the error code. Distinguish compilation, encoding, decoding and model intent.
+    validations:
+      required: true
+  - type: checkboxes
+    id: data
+    attributes:
+      label: Data check
+      options:
+        - label: This report contains only synthetic data and no credentials.
+          required: true

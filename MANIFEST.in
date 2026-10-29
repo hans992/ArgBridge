@@ -1,0 +1,24 @@
+include README.md LICENSE CONTRIBUTING.md CODE_OF_CONDUCT.md SECURITY.md CHANGELOG.md pyproject.toml
+recursive-include src/argbridge *.py
+recursive-include examples *.py
+recursive-include tests *.py
+recursive-include scripts *.py
+recursive-include docs *.md
+include bench/run.py bench/manual_wrapper.py bench/release_compare.py bench/requirements-lock.txt
+include bench/node/compare.mjs bench/node/package.json bench/node/package-lock.json
+recursive-include bench/fixtures *.json
+recursive-include bench/external *.json LICENSE
+include bench/results/benchmark.json bench/results/demo.json bench/results/mastra.json
+include bench/results/openai-sdk.json bench/results/packaging.json bench/results/pytest.txt bench/results/pytest.xml
+recursive-include bench/results/release-0.1.0a1 *.json
+include evals/__init__.py
+include evals/realworld/*.py evals/realworld/mastra.mjs evals/realworld/config.json
+include evals/realworld/requirements-lock.txt evals/realworld/README.md
+recursive-include evals/realworld/dataset *.json
+recursive-include evals/realworld/analysis *.py
+include evals/realworld/artifacts/offline.json evals/realworld/artifacts/offline-tests.txt evals/realworld/artifacts/authorization.example.json
+recursive-include evals/realworld/artifacts/live-2026-10-29 *.json *.md
+recursive-include .github *.yml *.md
+global-exclude __pycache__ *.py[cod] .env .env.* authorization.local.json
+prune evals/realworld/runs
+exclude evals/realworld/artifacts/plan.json

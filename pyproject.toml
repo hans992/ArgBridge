@@ -3,26 +3,57 @@ requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "argbridge-experiment"
-version = "0.1.0"
+name = "argbridge"
+dynamic = ["version"]
 description = "Reversible strict-tool schema transport for presence-sensitive JSON arguments"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.11"
-dependencies = ["jsonschema>=4.23,<5"]
+dependencies = ["jsonschema>=4.23,<5", "referencing>=0.35.1,<1"]
+keywords = ["json-schema", "function-calling", "ai-tools", "validation"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10", "hypothesis>=6.100,<7"]
+openai = ["openai>=3.41,<4"]
 
 [project.urls]
 Repository = "https://github.com/hans992/ArgBridge"
 Issues = "https://github.com/hans992/ArgBridge/issues"
+Documentation = "https://github.com/hans992/ArgBridge/tree/main/docs"
 
 [project.scripts]
 argbridge = "argbridge.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+include = ["argbridge*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "argbridge._version.__version__"}
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
+pythonpath = ["src", "."]
 testpaths = ["tests"]
+addopts = "--strict-markers"
+markers = ["evaluation: optional pinned SDK/Node evaluation tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
 

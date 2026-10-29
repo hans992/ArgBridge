@@ -1,94 +1,120 @@
 # ArgBridge
 
-Experimental, reversible argument transport for strict AI function calling.
+Preserve **omitted**, **null** and **present** JSON arguments when a strict AI tool schema requires every field.
 
-ArgBridge compiles a supported subset of JSON Schema into a closed-object, all-fields-required representation. It preserves omitted fields, explicit nulls and typed dictionary contents, and validates decoded arguments against the original contract.
+For a patch-style API, these can be three different operations:
 
-[MIT license](LICENSE) · [Architecture and supported subset](docs/ARCHITECTURE.md) · [Offline benchmark](docs/BENCHMARK.md)
+```python
+{}                   # retain the existing name
+{"name": None}       # clear the name
+{"name": "Grace"}    # replace the name
+```
 
-[Real-provider evaluation protocol](evals/realworld/README.md) · [Current SDK comparison](docs/SDK_COMPARISON.md) · [Live evaluation results](docs/REALWORLD_EVALUATION.md)
+Making every optional field nullable can collapse the first two cases. ArgBridge compiles a supported subset of JSON Schema into an explicit wire representation and reconstructs the original JSON after validation. Typed dictionaries are transported as key/value entries, with duplicate keys rejected.
 
-## Status
+**Experimental alpha: 0.1.0a1 release candidate.** The candidate is prepared locally; it is not yet a published PyPI package. The current public research snapshot and its evidence remain available. No production-readiness or model-accuracy improvement is claimed.
 
-**Research status: experimental library.** A 995-request live evaluation accepted all 35 schema probes, but exact intent accuracy was 91.1% for ArgBridge and 92.3% for factored ArgBridge versus 96.4% for original non-strict tools with local validation. The latter were cheaper and faster in this run. All arms made semantic errors. See the [results, raw synthetic evidence and comparison limitations](docs/REALWORLD_EVALUATION.md).
+[API](docs/API.md) · [Supported schemas](docs/SUPPORTED_SCHEMAS.md) · [Architecture](docs/ARCHITECTURE.md) · [Compatibility](docs/COMPATIBILITY.md) · [MIT license](LICENSE)
 
-The deterministic codec and CLI remain unchanged. This project is not presented as a production-ready mutation interface.
+## Try it in five minutes
 
-## Why presence matters
+From a checkout or extracted source archive, create a virtual environment:
 
-For an update API, leaving a name out can mean "keep the existing name"; sending null can mean "clear it." Replacing both cases with null loses information. ArgBridge uses explicit presence states and reconstructs the original JSON before the application receives it.
+```sh
+python -m venv .venv
+```
 
-Typed dictionaries use key/value entries. Duplicate keys and collisions with declared properties are rejected. A handwritten strict wrapper or a non-strict tool can be a better fit. ArgBridge trades automatic transformation and validation for a larger wire representation.
+On Windows (PowerShell):
 
-## Install and run
+```powershell
+.venv/Scripts/python -m pip install -e .
+.venv/Scripts/python examples/quickstart.py
+.venv/Scripts/python -m argbridge --version
+```
 
-Python 3.11+ is required; Python 3.12 was tested.
+On macOS/Linux:
 
-    python -m venv .venv
-    .venv/Scripts/python -m pip install -e .
-    .venv/Scripts/python examples/demo.py
+```sh
+.venv/bin/python -m pip install -e .
+.venv/bin/python examples/quickstart.py
+.venv/bin/python -m argbridge --version
+```
 
-On macOS/Linux, use .venv/bin/python. Dependency installation downloads public packages; the demo is offline. It keeps, clears and replaces a synthetic name, then rejects invalid arguments without invoking the handler. [Recorded output](bench/results/demo.json).
+Expected example output:
+
+```text
+keep: {}
+clear: {"name":null}
+replace: {"name":"Grace"}
+```
+
+No model, API key or Node installation is required. Python 3.11+ is required; see the distinction between locally tested and CI-targeted versions in [compatibility](docs/COMPATIBILITY.md).
 
 ## Python API
 
-    from argbridge import Compiled
+```python
+from argbridge import Compiled
 
-    codec = Compiled({
-        "type": "object",
-        "properties": {"name": {"type": ["string", "null"]}},
-        "additionalProperties": False
-    })
-    keep = codec.encode({})
-    clear = codec.encode({"name": None})
-    assert keep != clear
-    assert codec.decode(keep) == {}
-    assert codec.decode(clear) == {"name": None}
+codec = Compiled({
+    "type": "object",
+    "properties": {"name": {"type": ["string", "null"]}},
+    "additionalProperties": False,
+})
 
-For an eventual model integration, use codec.wire_schema as the tool parameter schema and decode returned arguments before invoking application logic. encode transforms existing JSON; it does not infer natural-language intent.
+keep = codec.encode({})
+clear = codec.encode({"name": None})
+assert keep != clear
+assert codec.decode(keep) == {}
+assert codec.decode(clear) == {"name": None}
+```
 
-guarded_call validates the contract. It does not authenticate users, authorize changes, check intent or make side effects safe to retry.
+For model-generated arguments, provide `codec.wire_schema` as the tool parameters, then call `codec.decode(loads(argument_text))` using `argbridge.loads`. `encode` transforms existing JSON; it does not infer natural-language intent. Your application defines what null means and decides whether to apply a decoded proposal.
 
-## Command line
+The [OpenAI example](docs/OPENAI_EXAMPLE.md) previews a real Responses request offline. Explicit live opt-in is available with user-supplied credentials; the example never applies changes to an external system. The [in-memory demonstration](examples/demo.py) shows retention, clearing and validation rejection.
 
-    argbridge compile source-schema.json --out bundle.json
-    argbridge encode bundle.json source-arguments.json --out wire.json
-    argbridge decode bundle.json wire.json
+## When to use it
 
-Input is UTF-8 JSON. Duplicate members and non-finite numbers are rejected. Expected failures produce structured stderr errors and exit code 2. Bundles are recompiled and checked on load.
+ArgBridge may be useful when an integration specifically requires strict closed-object tool schemas while the original contract distinguishes omission from explicit null or uses typed dictionary keys. It supplies reusable compilation and validation for that bounded contract.
 
-## Offline evidence
+For a few stable tools, an explicit handwritten operation wrapper may be simpler. If non-strict tools with local validation are acceptable, start there: that control performed better in the published model experiment. Framework-native validation may already meet your needs. ArgBridge is not a general JSON Schema converter or an agent framework.
 
-The original codec benchmark records:
+## Tradeoffs and evidence
 
-- 56 tests passed, including 2,500 generated examples.
-- 40/40 workflow round trips were exact.
-- 36 invalid inputs and 12 hostile payloads were rejected.
-- 87 external assertions passed; 256 were explicitly excluded as unsupported.
-- Median encode+decode time: 0.2024 ms; p95: 0.4885 ms, excluding compilation.
-- Aggregate schema size: 1,611 to 8,305 UTF-8 bytes, or 5.16×.
+- The original deterministic corpus passed 40 exact round trips, rejected 36 invalid inputs and 12 hostile payloads, and exercised 87 external assertions. **256 external assertions were excluded** as unsupported.
+- Aggregate schema size grew from 1,611 to 8,305 UTF-8 bytes: **5.16x**. The experimental factoring variant reduced this to 4.67x; it is not the default codec.
+- In **995 real API requests**, all 35 schema probes were accepted. Exact intent accuracy was **91.1%** for ArgBridge, **92.3%** for factored ArgBridge and **96.4%** for original non-strict tools with validation. Original ArgBridge cost 46% more per correct intent in that run.
+- The earlier handwritten baseline had an insufficiently documented nested mapping. A revised explicit-path control is now checked offline; **it has no measured live model accuracy**.
+- Successful decoding does not establish that a model chose the intended action. The live corpus includes valid but wrong clears and redundant writes.
 
-These are offline results from a small published corpus, not model-generated results or general JSON Schema conformance. Byte counts are not token counts. The [benchmark](docs/BENCHMARK.md) documents comparator scope and exclusions.
+[Historical benchmark](docs/BENCHMARK.md) · [Full live results and limitations](docs/REALWORLD_EVALUATION.md) · [Current SDK comparison](docs/SDK_COMPARISON.md) · [Release review](docs/RELEASE_REVIEW.md)
 
-## Reproduce
+Historical measurements name their exact commit, dependencies, corpus and model. The new release adapter and resource checks are not retroactively claimed to have been used in that experiment.
 
-    python -m pip install -r bench/requirements-lock.txt
-    python -m pip install --no-build-isolation --no-deps -e .
-    npm --prefix bench/node ci --ignore-scripts --no-audit --no-fund
-    node bench/node/compare.mjs
-    python bench/run.py
-    python -m pytest -q --hypothesis-show-statistics
+## CLI
 
-The benchmark lock preserves the original dependency versions. The core runtime only requires jsonschema. The external JSON Schema suite retains its separate MIT attribution and provenance.
+```sh
+argbridge compile source-schema.json --out bundle.json
+argbridge encode bundle.json source-arguments.json --out wire.json
+argbridge decode bundle.json wire.json
+```
 
-## Scope
+The CLI is offline, reads bounded UTF-8 JSON and reports expected errors as structured JSON with exit code 2. Bundles are recompiled and checked on load. [API and error reference](docs/API.md).
 
-Explicit primitive types, scalar enums, typed arrays, closed objects, typed maps, local acyclic references and selected unions/numeric constraints are supported. Patterns, formats, recursive schemas, unconstrained maps and many other keywords fail explicitly.
+## Scope and security
 
-A valid decoded argument can still represent the wrong user intent. The published live evaluation observed this failure. Further application-specific validation would be required before considering this representation for mutating tools.
+The supported subset includes primitives, scalar enums, typed arrays, closed objects, typed maps and selected local references/unions. Recursive or remote schemas, patterns/formats and many other keywords are explicitly refused. Source, generated wire and bundle sizes have documented limits. [Complete scope](docs/SUPPORTED_SCHEMAS.md).
 
-## Contributing
+Validation is not authentication, authorization, prompt-injection defense or transaction safety. `guarded_call` only validates before invoking your handler. [Security policy](SECURITY.md).
 
-Provide a minimal schema, source value, expected result and installed versions. Distinguish compilation, encoding, decoding and provider failures. Do not submit API keys, personal data or confidential customer contracts. Preserve benchmark fixtures and distinguish deterministic tests from provider-generated evidence.
+## Develop and contribute
 
-MIT licensed. Vendored datasets retain their original notices.
+```sh
+python -m pip install -e ".[test]"
+python -m pytest -m "not evaluation" -q
+```
+
+[Reproduction and packaging](docs/REPRODUCING.md) explains the separate optional SDK environment, immutable historical evidence and new output directories. CI is prepared for Windows/Linux and CPython 3.11–3.15; hosted results are pending publication approval, so no passing badge is displayed.
+
+See [CONTRIBUTING](CONTRIBUTING.md), the [code of conduct](CODE_OF_CONDUCT.md) and [changelog](CHANGELOG.md). Reports should contain minimal synthetic schemas and clear expected behavior. Credentials, customer data and private planning do not belong in the repository.
+
+MIT licensed. Vendored test data retains its own attribution; see [dependency and data notices](docs/DEPENDENCIES.md).
