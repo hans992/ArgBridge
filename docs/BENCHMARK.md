@@ -59,7 +59,7 @@ No model, hosting or paid-service call was made by the prototype. Its incurred i
 
 Aggregate source schema size is 1,611 UTF-8 bytes; emitted wire schema size is 8,305 bytes: 5.16Ã—. For the update workflow alone, schema size rises from 213 to 1,510 bytes. One sparse 10-byte input becomes a 106-byte wire message; the fullest tested 51-byte update becomes 149 bytes.
 
-Schema descriptions explain the new protocol and contribute to expansion. Byte counts are not token counts. Inference price, prompt caching, semantic generation error rate and end-to-end latency are unmeasured. A technically lossless codec may still be a worse model interface.
+Schema descriptions explain the new protocol and contribute to expansion. Byte counts are not token counts. Inference price, prompt caching, semantic generation error rate and end-to-end latency were not measured in this historical offline benchmark; see the separate [live evaluation](REALWORLD_EVALUATION.md). A technically lossless codec may still be a worse model interface.
 
 ## Interpretation
 

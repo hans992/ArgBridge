@@ -6,11 +6,13 @@ ArgBridge compiles a supported subset of JSON Schema into a closed-object, all-f
 
 [MIT license](LICENSE) · [Architecture and supported subset](docs/ARCHITECTURE.md) · [Offline benchmark](docs/BENCHMARK.md)
 
-[Real-provider evaluation protocol](evals/realworld/README.md) · [Current SDK comparison](docs/SDK_COMPARISON.md) · [Offline token measurements](docs/REALWORLD_EVALUATION.md)
+[Real-provider evaluation protocol](evals/realworld/README.md) · [Current SDK comparison](docs/SDK_COMPARISON.md) · [Live evaluation results](docs/REALWORLD_EVALUATION.md)
 
 ## Status
 
-The deterministic codec and CLI are tested. Real-provider schema acceptance, model intent accuracy and inference costs have not yet been measured. This is not a production-readiness claim.
+**Research status: experimental library.** A 995-request live evaluation accepted all 35 schema probes, but exact intent accuracy was 91.1% for ArgBridge and 92.3% for factored ArgBridge versus 96.4% for original non-strict tools with local validation. The latter were cheaper and faster in this run. All arms made semantic errors. See the [results, raw synthetic evidence and comparison limitations](docs/REALWORLD_EVALUATION.md).
+
+The deterministic codec and CLI remain unchanged. This project is not presented as a production-ready mutation interface.
 
 ## Why presence matters
 
@@ -83,7 +85,7 @@ The benchmark lock preserves the original dependency versions. The core runtime 
 
 Explicit primitive types, scalar enums, typed arrays, closed objects, typed maps, local acyclic references and selected unions/numeric constraints are supported. Patterns, formats, recursive schemas, unconstrained maps and many other keywords fail explicitly.
 
-A valid decoded argument can still represent the wrong user intent. Live model evaluation is required before using this representation for mutating tools.
+A valid decoded argument can still represent the wrong user intent. The published live evaluation observed this failure. Further application-specific validation would be required before considering this representation for mutating tools.
 
 ## Contributing
 

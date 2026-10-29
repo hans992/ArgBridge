@@ -1,0 +1,478 @@
+{
+  "methods": {
+    "argbridge": {
+      "scheduled_intents": 168,
+      "observed_intents": 168,
+      "target_intents": 168,
+      "unsupported_intents": 0,
+      "scheduled_run_complete": true,
+      "scored_intents": 168,
+      "correct_intents": 153,
+      "provider_intent_requests": 168,
+      "semantic_accuracy_observed": 0.9107142857142857,
+      "structural_valid": 168,
+      "unsafe_accepted_mutations": 10,
+      "usage_cost_usd": 0.11074725,
+      "unknown_charge_events": 0,
+      "cost_per_correct_operation_usd": 0.0007238382352941177,
+      "semantic_accuracy_including_unsupported": 0.9107142857142857,
+      "latency_p50_ms": 1029.8729001078755,
+      "latency_p95_ms": 1443.6919998843223,
+      "failure_counts": {
+        "null": 153,
+        "wrong_mutation": 10,
+        "wrong_action": 5
+      }
+    },
+    "argbridge_factored": {
+      "scheduled_intents": 168,
+      "observed_intents": 168,
+      "target_intents": 168,
+      "unsupported_intents": 0,
+      "scheduled_run_complete": true,
+      "scored_intents": 168,
+      "correct_intents": 155,
+      "provider_intent_requests": 168,
+      "semantic_accuracy_observed": 0.9226190476190477,
+      "structural_valid": 168,
+      "unsafe_accepted_mutations": 8,
+      "usage_cost_usd": 0.106875,
+      "unknown_charge_events": 0,
+      "cost_per_correct_operation_usd": 0.000689516129032258,
+      "semantic_accuracy_including_unsupported": 0.9226190476190477,
+      "latency_p50_ms": 987.0382000226527,
+      "latency_p95_ms": 1413.0597000475973,
+      "failure_counts": {
+        "null": 155,
+        "wrong_action": 5,
+        "wrong_mutation": 8
+      }
+    },
+    "manual_strict": {
+      "scheduled_intents": 168,
+      "observed_intents": 168,
+      "target_intents": 168,
+      "unsupported_intents": 0,
+      "scheduled_run_complete": true,
+      "scored_intents": 168,
+      "correct_intents": 138,
+      "provider_intent_requests": 168,
+      "semantic_accuracy_observed": 0.8214285714285714,
+      "structural_valid": 168,
+      "unsafe_accepted_mutations": 3,
+      "usage_cost_usd": 0.091017,
+      "unknown_charge_events": 0,
+      "cost_per_correct_operation_usd": 0.0006595434782608696,
+      "semantic_accuracy_including_unsupported": 0.8214285714285714,
+      "latency_p50_ms": 951.7705999314785,
+      "latency_p95_ms": 1464.3859998323023,
+      "failure_counts": {
+        "wrong_action": 27,
+        "null": 138,
+        "wrong_mutation": 3
+      }
+    },
+    "original_nonstrict": {
+      "scheduled_intents": 168,
+      "observed_intents": 168,
+      "target_intents": 168,
+      "unsupported_intents": 0,
+      "scheduled_run_complete": true,
+      "scored_intents": 168,
+      "correct_intents": 162,
+      "provider_intent_requests": 168,
+      "semantic_accuracy_observed": 0.9642857142857143,
+      "structural_valid": 168,
+      "unsafe_accepted_mutations": 3,
+      "usage_cost_usd": 0.080271,
+      "unknown_charge_events": 0,
+      "cost_per_correct_operation_usd": 0.0004955,
+      "semantic_accuracy_including_unsupported": 0.9642857142857143,
+      "latency_p50_ms": 850.326299900189,
+      "latency_p95_ms": 1273.3420000877231,
+      "failure_counts": {
+        "null": 162,
+        "wrong_action": 3,
+        "wrong_mutation": 3
+      }
+    },
+    "agents_strict": {
+      "scheduled_intents": 120,
+      "observed_intents": 120,
+      "target_intents": 168,
+      "unsupported_intents": 48,
+      "scheduled_run_complete": true,
+      "scored_intents": 120,
+      "correct_intents": 39,
+      "provider_intent_requests": 120,
+      "semantic_accuracy_observed": 0.325,
+      "structural_valid": 120,
+      "unsafe_accepted_mutations": 75,
+      "usage_cost_usd": 0.06139125,
+      "unknown_charge_events": 0,
+      "cost_per_correct_operation_usd": 0.0015741346153846155,
+      "semantic_accuracy_including_unsupported": 0.23214285714285715,
+      "latency_p50_ms": 880.1901000551879,
+      "latency_p95_ms": 1219.133700011298,
+      "failure_counts": {
+        "wrong_mutation": 75,
+        "null": 39,
+        "wrong_action": 6
+      }
+    },
+    "mastra_strict": {
+      "scheduled_intents": 168,
+      "observed_intents": 168,
+      "target_intents": 168,
+      "unsupported_intents": 0,
+      "scheduled_run_complete": true,
+      "scored_intents": 168,
+      "correct_intents": 93,
+      "provider_intent_requests": 168,
+      "semantic_accuracy_observed": 0.5535714285714286,
+      "structural_valid": 168,
+      "unsafe_accepted_mutations": 54,
+      "usage_cost_usd": 0.08218575,
+      "unknown_charge_events": 0,
+      "cost_per_correct_operation_usd": 0.0008837177419354839,
+      "semantic_accuracy_including_unsupported": 0.5535714285714286,
+      "latency_p50_ms": 881.7968000657856,
+      "latency_p95_ms": 1256.7886000033468,
+      "failure_counts": {
+        "wrong_mutation": 73,
+        "null": 93,
+        "wrong_action": 2
+      }
+    }
+  },
+  "paired": {
+    "argbridge_vs_manual_strict": {
+      "paired_observations": 168,
+      "encoding_losses": 9,
+      "encoding_gains": 24
+    },
+    "argbridge_vs_original_nonstrict": {
+      "paired_observations": 168,
+      "encoding_losses": 9,
+      "encoding_gains": 0
+    },
+    "argbridge_vs_agents_strict": {
+      "paired_observations": 120,
+      "encoding_losses": 1,
+      "encoding_gains": 69
+    },
+    "argbridge_vs_mastra_strict": {
+      "paired_observations": 168,
+      "encoding_losses": 4,
+      "encoding_gains": 64
+    },
+    "argbridge_factored_vs_manual_strict": {
+      "paired_observations": 168,
+      "encoding_losses": 7,
+      "encoding_gains": 24
+    },
+    "argbridge_factored_vs_original_nonstrict": {
+      "paired_observations": 168,
+      "encoding_losses": 7,
+      "encoding_gains": 0
+    },
+    "argbridge_factored_vs_agents_strict": {
+      "paired_observations": 120,
+      "encoding_losses": 0,
+      "encoding_gains": 69
+    },
+    "argbridge_factored_vs_mastra_strict": {
+      "paired_observations": 168,
+      "encoding_losses": 2,
+      "encoding_gains": 64
+    }
+  },
+  "schema_observations": [
+    {
+      "id": "probe:flat:argbridge",
+      "method": "argbridge",
+      "workflow": "flat",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:flat:argbridge_factored",
+      "method": "argbridge_factored",
+      "workflow": "flat",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:flat:manual_strict",
+      "method": "manual_strict",
+      "workflow": "flat",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:flat:original_nonstrict",
+      "method": "original_nonstrict",
+      "workflow": "flat",
+      "request_strict": false,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:flat:agents_strict",
+      "method": "agents_strict",
+      "workflow": "flat",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:flat:mastra_strict",
+      "method": "mastra_strict",
+      "workflow": "flat",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:nested:argbridge",
+      "method": "argbridge",
+      "workflow": "nested",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:nested:argbridge_factored",
+      "method": "argbridge_factored",
+      "workflow": "nested",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:nested:manual_strict",
+      "method": "manual_strict",
+      "workflow": "nested",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:nested:original_nonstrict",
+      "method": "original_nonstrict",
+      "workflow": "nested",
+      "request_strict": false,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:nested:agents_strict",
+      "method": "agents_strict",
+      "workflow": "nested",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:nested:mastra_strict",
+      "method": "mastra_strict",
+      "workflow": "nested",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:labels:argbridge",
+      "method": "argbridge",
+      "workflow": "labels",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:labels:argbridge_factored",
+      "method": "argbridge_factored",
+      "workflow": "labels",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:labels:manual_strict",
+      "method": "manual_strict",
+      "workflow": "labels",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:labels:original_nonstrict",
+      "method": "original_nonstrict",
+      "workflow": "labels",
+      "request_strict": false,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:labels:mastra_strict",
+      "method": "mastra_strict",
+      "workflow": "labels",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:ticket:argbridge",
+      "method": "argbridge",
+      "workflow": "ticket",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:ticket:argbridge_factored",
+      "method": "argbridge_factored",
+      "workflow": "ticket",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:ticket:manual_strict",
+      "method": "manual_strict",
+      "workflow": "ticket",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:ticket:original_nonstrict",
+      "method": "original_nonstrict",
+      "workflow": "ticket",
+      "request_strict": false,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:ticket:agents_strict",
+      "method": "agents_strict",
+      "workflow": "ticket",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "probe:ticket:mastra_strict",
+      "method": "mastra_strict",
+      "workflow": "ticket",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "original_probe:patch",
+      "method": "argbridge",
+      "workflow": "original:patch",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "original_probe:neutral",
+      "method": "argbridge",
+      "workflow": "original:neutral",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "original_probe:typed_map",
+      "method": "argbridge",
+      "workflow": "original:typed_map",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "original_probe:mixed_map",
+      "method": "argbridge",
+      "workflow": "original:mixed_map",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "original_probe:nested",
+      "method": "argbridge",
+      "workflow": "original:nested",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "original_probe:optional_union",
+      "method": "argbridge",
+      "workflow": "original:optional_union",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "original_probe:local_ref",
+      "method": "argbridge",
+      "workflow": "original:local_ref",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "original_probe:array_records",
+      "method": "argbridge",
+      "workflow": "original:array_records",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "original_probe:nullable_map",
+      "method": "argbridge",
+      "workflow": "original:nullable_map",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "original_probe:scalar_enum",
+      "method": "argbridge",
+      "workflow": "original:scalar_enum",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "original_probe:oneof_overlap",
+      "method": "argbridge",
+      "workflow": "original:oneof_overlap",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    },
+    {
+      "id": "original_probe:required_null",
+      "method": "argbridge",
+      "workflow": "original:required_null",
+      "request_strict": true,
+      "schema_acceptance": "accepted",
+      "http_status": null
+    }
+  ],
+  "note": "Repeated responses share scenarios; not independent customer samples. Cost excludes separate schema probes; no invoice claim.",
+  "evidence_kind": "openai_live",
+  "plan_sha256": "9dd0cb4526f5d63f792b51147770e348cbc92ec66b312683fd49d58e06b00df0",
+  "halt_reason": null,
+  "budget_usd": 5.0,
+  "accounted_cost_or_reservation_usd": 0.5499247499999996
+}

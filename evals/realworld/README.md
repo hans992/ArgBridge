@@ -1,6 +1,6 @@
 # Real-provider tool-calling evaluation
 
-Status: offline preparation completed; zero live requests. Provider compatibility and model accuracy remain unmeasured.
+Status: the frozen 995-request live run completed on 29 October 2026. [Results and engineering decision](../../docs/REALWORLD_EVALUATION.md). The offline artifacts remain unchanged as the pre-inference record.
 
 This evaluation preserves the existing codec and historical benchmark. It adds a frozen instruction corpus, strict/nonstrict baselines, an evaluation-only schema factoring variant, a scorer and an explicitly gated OpenAI Responses API runner.
 
@@ -33,7 +33,7 @@ Primary semantic correctness requires the right tool and the exact intended patc
 
 1. ArgBridge: existing unmodified wire schema and decoder.
 2. Factored ArgBridge: repeated schema nodes become local references and repeated generated presence guidance is shared. Wire values and decoder are unchanged.
-3. Handwritten strict operations: a typed operation-list wrapper maintained specifically for these four workflows. It is the strongest strict control, not a deliberately lossy nullable baseline.
+3. Handwritten strict operations: a typed operation-list wrapper maintained specifically for these four workflows. It was intended as a strong strict control. A post-run inspection found that its nested field mapping was insufficiently documented for the model; see the results before interpreting its ranking.
 4. Original non-strict tools: original schemas, explicitly strict: false, followed by original-schema validation.
 5. OpenAI Agents strict conversion: current installed strict-schema conversion and original-contract guard.
 6. Mastra strict conversion: current installed OpenAI compatibility layer and its exported null normalizer, followed by the same original-contract guard.
@@ -92,4 +92,14 @@ Do not edit an approved plan or code underneath a run. Regenerate and review it 
 
 A strong result must include real acceptance, zero unintended accepted clears in this dataset, and accuracy competitive with the carefully written strict control at an acceptable measured cost. A schema-size improvement alone is insufficient. If the handcrafted/current alternatives match the workflow with less overhead, report that result directly.
 
-Until the authorized live run completes, no model-reliability, production-readiness or provider-compatibility conclusion is justified.
+The completed run supports acceptance of the submitted schemas and measured accuracy for this corpus. It does not establish production readiness or superiority over the strongest controls. The decision is to retain ArgBridge as a research artifact.
+
+## Recompute the published live analysis without inference
+
+After reproducing the offline preparation above (which recreates the hashed plan), run:
+
+    python evals/realworld/analysis/report.py . evals/realworld/artifacts/live-2026-10-29 analysis.local.json
+
+This reads published synthetic records and writes aggregate metrics and failure examples. It does not load an API key or make requests. `analysis/audit.py` was used against the locally preserved complete raw run to re-score every intent and recalculate usage costs; the resulting audit is published. Opaque provider response/call IDs are omitted from published records. Output argument strings and usage are retained.
+
+The live plan was executed without changing the frozen dataset, wire schemas, baseline adapters or scorer. Post-run findings, including the handwritten baseline limitation, are documented rather than silently repaired in the original run.

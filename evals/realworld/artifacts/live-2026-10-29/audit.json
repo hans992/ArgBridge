@@ -1,0 +1,50 @@
+{
+  "evidence_kind": "offline_recalculation_of_preserved_live_results",
+  "requests": 995,
+  "rescored_intents": 960,
+  "score_mismatches": 0,
+  "usage_cost_usd": 0.54992475,
+  "plan_sha256": "9dd0cb4526f5d63f792b51147770e348cbc92ec66b312683fd49d58e06b00df0",
+  "dataset_manifest_sha256": "e226cbb60b8fb653c2b01b10e4f871360654fef0a39c3b975065e18451a126f1",
+  "raw_events_sha256": "ff4848f4fa736f7e4125ebdbd0b7e18f8ae44cf3f5c8ce9ff32849f34c870217",
+  "published_records_sha256": "f6ca20b63df14423bd200121369401d6ed31466ce7a234e58bb689ef89b90301",
+  "validation_layers": {
+    "argbridge": {
+      "intent_responses": 168,
+      "exactly_one_tool_call": 168,
+      "json_valid": 168,
+      "wire_schema_valid": 168
+    },
+    "argbridge_factored": {
+      "intent_responses": 168,
+      "exactly_one_tool_call": 168,
+      "json_valid": 168,
+      "wire_schema_valid": 168
+    },
+    "manual_strict": {
+      "intent_responses": 168,
+      "exactly_one_tool_call": 168,
+      "json_valid": 168,
+      "wire_schema_valid": 168
+    },
+    "original_nonstrict": {
+      "intent_responses": 168,
+      "exactly_one_tool_call": 168,
+      "json_valid": 168,
+      "wire_schema_valid": 168
+    },
+    "agents_strict": {
+      "intent_responses": 120,
+      "exactly_one_tool_call": 120,
+      "json_valid": 120,
+      "wire_schema_valid": 120
+    },
+    "mastra_strict": {
+      "intent_responses": 168,
+      "exactly_one_tool_call": 168,
+      "json_valid": 168,
+      "wire_schema_valid": 168
+    }
+  },
+  "note": "Recomputation verifies consistency, not independent validation of the oracle or scorer. No API calls."
+}

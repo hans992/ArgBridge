@@ -6,7 +6,7 @@ Source schema → compile once → wire schema + internal transformation plan.
 
 Existing valid JSON → encode → wire JSON → decode → original JSON validation → optional caller-supplied handler.
 
-For a future model integration, the model must generate the wire JSON directly from its instruction and the emitted schema. That generation step is absent from this offline experiment. Schema validation cannot detect a validly shaped but unintended update.
+For model integration, the model generates wire JSON directly from its instruction and the emitted schema. The separate [live evaluation](REALWORLD_EVALUATION.md) exercises this step and observes validly shaped but unintended updates. Schema validation cannot detect those intent errors.
 
 ## Representation
 
@@ -47,7 +47,7 @@ Runtime source and wire schemas are defensively copied. Bundles are recomputed, 
 
 JSON is bounded to 1 MB, 20,000 nodes and depth 64; compilation has a 4,000-node expansion budget and depth bound. Emitted wire schemas are checked against a conservative local profile with ten container levels, 5,000 properties, 1,000 enum values and documented character budgets.
 
-The local profile implements a subset of the provider documentation, not the provider's parser. It may conservatively refuse shapes a provider accepts; live acceptance remains unknown. Complex primitive unions and the larger tagged schemas particularly need live testing.
+The local profile implements a subset of the provider documentation, not the provider's parser. It may conservatively refuse shapes a provider accepts. The live evaluation established acceptance of the twelve original benchmark wire schemas and four workflow schemas for one OpenAI model snapshot; acceptance of other emitted schemas remains unverified.
 
 Errors expose constraint names and paths, not complete input values. Paths may themselves contain caller data. The module is not an isolation boundary against malicious Python objects, arbitrary handler code or every possible denial of service. It accepts ordinary bounded JSON and trusted application schemas.
 

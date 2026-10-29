@@ -1,6 +1,6 @@
 # Current SDK comparison
 
-Checked 28–29 October 2026. These are local executions and source observations; no model inference was used.
+Checked 28–29 October 2026. The implementation review below records local executions and current source observations. The separate [live evaluation](REALWORLD_EVALUATION.md) now measures these exact paths with model-generated arguments.
 
 ## OpenAI Agents SDK 0.24.0
 
@@ -36,7 +36,7 @@ This describes the tested exports and configuration. It does not establish how e
 
 The handwritten strict operation-list wrapper preserves the frozen scenarios' intended patches in deterministic reference tests and uses fewer schema tokens. Original non-strict tools also retain the JSON contract. Either could be preferable in practice.
 
-ArgBridge's automatic compilation may reduce per-contract wrapper work, but that engineering convenience is not a measured model advantage. Only the paired live evaluation can establish generation reliability and cost for the selected configuration.
+ArgBridge's automatic compilation may reduce per-contract wrapper work, but that engineering convenience is not a measured model advantage. The completed paired live evaluation found no accuracy or cost advantage over original non-strict tools with validation. Its handwritten strict control has a documented nested-mapping limitation, so the run cannot rank ArgBridge against a fully specified strict wrapper.
 
 ## Sources for the live configuration
 
