@@ -1,4 +1,6 @@
 import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { OpenAISchemaCompatLayer, wrapSchemaWithNullTransform } from "@mastra/schema-compat";
 
 const fixtures = JSON.parse(fs.readFileSync(new URL("../fixtures/workflows.json", import.meta.url), "utf8"));
@@ -40,7 +42,10 @@ for (const [id, input] of [["patch", {id:"A", name:null}], ["required_null", {x:
     null_members:Object.keys(transformed.value).filter(k=>transformed.value[k]===null)
   });
 }
-fs.mkdirSync(new URL("../results/", import.meta.url), {recursive:true});
-fs.writeFileSync(new URL("../results/mastra.json", import.meta.url), JSON.stringify(result, null, 2)+"\n");
+const historical = fileURLToPath(new URL("../results/", import.meta.url));
+const output = path.resolve(process.argv[2] || path.join(historical, "local-rerun"));
+if (output === path.resolve(historical)) throw new Error("Use a separate output directory to preserve historical results");
+fs.mkdirSync(output, {recursive:true});
+fs.writeFileSync(path.join(output, "mastra.json"), JSON.stringify(result, null, 2)+"\n");
 console.log(JSON.stringify({schemas:results.length, normalizer_probes:result.normalizer_probes}, null, 2));
 

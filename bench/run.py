@@ -1,5 +1,6 @@
 """Reproducible offline evaluation. No inference, customer data, or network I/O."""
 from collections import Counter
+import argparse
 from copy import deepcopy
 from datetime import datetime, timezone
 import hashlib
@@ -17,8 +18,12 @@ from argbridge import BridgeError, Compiled, UnsupportedSchema, canonical, loads
 from jsonschema import Draft202012Validator
 from openai.lib._pydantic import _ensure_strict_json_schema
 
-OUT = ROOT / "bench/results"
-OUT.mkdir(exist_ok=True)
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--output", type=Path, default=ROOT / "bench/results/local-rerun")
+OUT = parser.parse_args().output.resolve()
+if OUT == (ROOT / "bench/results").resolve():
+    parser.error("Use a separate output directory to preserve the historical benchmark")
+OUT.mkdir(parents=True, exist_ok=True)
 fixtures = json.loads((ROOT / "bench/fixtures/workflows.json").read_text())
 by_id = {f["id"]: f for f in fixtures}
 

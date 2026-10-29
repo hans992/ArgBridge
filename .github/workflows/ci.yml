@@ -1,0 +1,91 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  core:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.11', '3.12', '3.13', '3.14', '3.15']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -e ".[test]"
+      - run: python -m pytest -m "not evaluation" -q
+      - run: python examples/quickstart.py
+      - run: python examples/openai_tool.py
+
+  minimum-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -e ".[test]" jsonschema==4.23.0 referencing==0.35.1
+      - run: python -m pytest -m "not evaluation" -q
+
+  evaluation-offline:
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_AGENTS_DISABLE_TRACING: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+      - name: Select runner-local tokenizer cache
+        shell: bash
+        run: echo "TIKTOKEN_CACHE_DIR=$RUNNER_TEMP/tiktoken-cache" >> "$GITHUB_ENV"
+      - run: python -m pip install -r evals/realworld/requirements-lock.txt
+      - run: python -m pip install --no-build-isolation --no-deps -e .
+      - run: npm --prefix bench/node ci --ignore-scripts --no-audit --no-fund
+      - name: Cache public tokenizer data (not inference)
+        run: python -c "import tiktoken; tiktoken.encoding_for_model('gpt-5.4-mini-2026-03-17')"
+      - run: python -m pytest -m evaluation -q
+      - run: python -m evals.realworld.harness prepare --output evals/realworld/runs/ci-prepared
+
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - run: python -m pip install build==1.6.1 setuptools==84.2.1 twine==7.0.0 ruff==0.17.3
+      - run: python -m ruff check src examples scripts
+      - run: python -m ruff format --check src examples scripts
+      - run: python -m build --no-isolation
+      - run: python -m twine check --strict dist/*
+      - run: python scripts/check_release.py dist
+      - run: python -m pip install dist/*.whl
+      - run: python -I scripts/smoke_installed.py
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: experimental-python-distributions
+          path: dist/*
+          retention-days: 14
+
+# No API secrets, paid requests, deployments, tags or package publication.

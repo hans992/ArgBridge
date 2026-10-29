@@ -1,0 +1,2168 @@
+{
+  "generated_utc": "2026-10-29T08:05:49.555269+00:00",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "jsonschema": "4.26.0",
+    "openai": "3.40.0",
+    "hypothesis": "6.170.13",
+    "pytest": "9.2.0"
+  },
+  "scope": {
+    "inference_calls": 0,
+    "inference_cost": 0,
+    "live_provider_acceptance_tested": false,
+    "generation_accuracy_measured": false,
+    "token_cost_measured": false,
+    "commercial_validation": "unverified"
+  },
+  "workflows": [
+    {
+      "id": "patch",
+      "valid_exact": 5,
+      "invalid_rejected": 5,
+      "source_schema_bytes": 213,
+      "wire_schema_bytes": 1510,
+      "wire_profile": {
+        "properties": 14,
+        "enum_values": 6,
+        "name_enum_chars": 111,
+        "max_depth": 3
+      },
+      "payloads": [
+        {
+          "source_bytes": 10,
+          "wire_bytes": 106
+        },
+        {
+          "source_bytes": 22,
+          "wire_bytes": 120
+        },
+        {
+          "source_bytes": 20,
+          "wire_bytes": 118
+        },
+        {
+          "source_bytes": 36,
+          "wire_bytes": 132
+        },
+        {
+          "source_bytes": 51,
+          "wire_bytes": 149
+        }
+      ],
+      "encode_decode": {
+        "n": 150,
+        "median_ms": 0.3241,
+        "p95_ms": 0.5096,
+        "max_ms": 0.5513
+      }
+    },
+    {
+      "id": "neutral",
+      "valid_exact": 2,
+      "invalid_rejected": 4,
+      "source_schema_bytes": 172,
+      "wire_schema_bytes": 271,
+      "wire_profile": {
+        "properties": 3,
+        "enum_values": 0,
+        "name_enum_chars": 15,
+        "max_depth": 3
+      },
+      "payloads": [
+        {
+          "source_bytes": 20,
+          "wire_bytes": 34
+        },
+        {
+          "source_bytes": 26,
+          "wire_bytes": 40
+        }
+      ],
+      "encode_decode": {
+        "n": 60,
+        "median_ms": 0.1585,
+        "p95_ms": 0.1904,
+        "max_ms": 0.2796
+      }
+    },
+    {
+      "id": "typed_map",
+      "valid_exact": 3,
+      "invalid_rejected": 3,
+      "source_schema_bytes": 58,
+      "wire_schema_bytes": 357,
+      "wire_profile": {
+        "properties": 4,
+        "enum_values": 0,
+        "name_enum_chars": 24,
+        "max_depth": 4
+      },
+      "payloads": [
+        {
+          "source_bytes": 2,
+          "wire_bytes": 28
+        },
+        {
+          "source_bytes": 25,
+          "wire_bytes": 83
+        },
+        {
+          "source_bytes": 26,
+          "wire_bytes": 100
+        }
+      ],
+      "encode_decode": {
+        "n": 90,
+        "median_ms": 0.1981,
+        "p95_ms": 0.2623,
+        "max_ms": 0.2974
+      }
+    },
+    {
+      "id": "mixed_map",
+      "valid_exact": 3,
+      "invalid_rejected": 3,
+      "source_schema_bytes": 155,
+      "wire_schema_bytes": 917,
+      "wire_profile": {
+        "properties": 10,
+        "enum_values": 2,
+        "name_enum_chars": 67,
+        "max_depth": 4
+      },
+      "payloads": [
+        {
+          "source_bytes": 13,
+          "wire_bytes": 77
+        },
+        {
+          "source_bytes": 31,
+          "wire_bytes": 112
+        },
+        {
+          "source_bytes": 66,
+          "wire_bytes": 195
+        }
+      ],
+      "encode_decode": {
+        "n": 90,
+        "median_ms": 0.3272,
+        "p95_ms": 0.5542,
+        "max_ms": 0.6326
+      }
+    },
+    {
+      "id": "nested",
+      "valid_exact": 4,
+      "invalid_rejected": 3,
+      "source_schema_bytes": 237,
+      "wire_schema_bytes": 1516,
+      "wire_profile": {
+        "properties": 13,
+        "enum_values": 6,
+        "name_enum_chars": 109,
+        "max_depth": 5
+      },
+      "payloads": [
+        {
+          "source_bytes": 2,
+          "wire_bytes": 45
+        },
+        {
+          "source_bytes": 15,
+          "wire_bytes": 108
+        },
+        {
+          "source_bytes": 26,
+          "wire_bytes": 122
+        },
+        {
+          "source_bytes": 35,
+          "wire_bytes": 133
+        }
+      ],
+      "encode_decode": {
+        "n": 120,
+        "median_ms": 0.3823,
+        "p95_ms": 0.4778,
+        "max_ms": 0.5839
+      }
+    },
+    {
+      "id": "optional_union",
+      "valid_exact": 4,
+      "invalid_rejected": 3,
+      "source_schema_bytes": 145,
+      "wire_schema_bytes": 927,
+      "wire_profile": {
+        "properties": 9,
+        "enum_values": 4,
+        "name_enum_chars": 69,
+        "max_depth": 4
+      },
+      "payloads": [
+        {
+          "source_bytes": 2,
+          "wire_bytes": 43
+        },
+        {
+          "source_bytes": 13,
+          "wire_bytes": 79
+        },
+        {
+          "source_bytes": 12,
+          "wire_bytes": 78
+        },
+        {
+          "source_bytes": 13,
+          "wire_bytes": 79
+        }
+      ],
+      "encode_decode": {
+        "n": 120,
+        "median_ms": 0.3242,
+        "p95_ms": 0.414,
+        "max_ms": 0.6629
+      }
+    },
+    {
+      "id": "local_ref",
+      "valid_exact": 3,
+      "invalid_rejected": 1,
+      "source_schema_bytes": 155,
+      "wire_schema_bytes": 607,
+      "wire_profile": {
+        "properties": 5,
+        "enum_values": 2,
+        "name_enum_chars": 42,
+        "max_depth": 3
+      },
+      "payloads": [
+        {
+          "source_bytes": 2,
+          "wire_bytes": 42
+        },
+        {
+          "source_bytes": 14,
+          "wire_bytes": 56
+        },
+        {
+          "source_bytes": 13,
+          "wire_bytes": 55
+        }
+      ],
+      "encode_decode": {
+        "n": 90,
+        "median_ms": 0.2328,
+        "p95_ms": 0.2454,
+        "max_ms": 0.3301
+      }
+    },
+    {
+      "id": "array_records",
+      "valid_exact": 3,
+      "invalid_rejected": 3,
+      "source_schema_bytes": 194,
+      "wire_schema_bytes": 690,
+      "wire_profile": {
+        "properties": 6,
+        "enum_values": 2,
+        "name_enum_chars": 44,
+        "max_depth": 4
+      },
+      "payloads": [
+        {
+          "source_bytes": 2,
+          "wire_bytes": 16
+        },
+        {
+          "source_bytes": 14,
+          "wire_bytes": 53
+        },
+        {
+          "source_bytes": 43,
+          "wire_bytes": 113
+        }
+      ],
+      "encode_decode": {
+        "n": 90,
+        "median_ms": 0.1832,
+        "p95_ms": 0.5112,
+        "max_ms": 0.5841
+      }
+    },
+    {
+      "id": "nullable_map",
+      "valid_exact": 3,
+      "invalid_rejected": 2,
+      "source_schema_bytes": 68,
+      "wire_schema_bytes": 670,
+      "wire_profile": {
+        "properties": 8,
+        "enum_values": 2,
+        "name_enum_chars": 50,
+        "max_depth": 5
+      },
+      "payloads": [
+        {
+          "source_bytes": 4,
+          "wire_bytes": 42
+        },
+        {
+          "source_bytes": 2,
+          "wire_bytes": 52
+        },
+        {
+          "source_bytes": 7,
+          "wire_bytes": 73
+        }
+      ],
+      "encode_decode": {
+        "n": 90,
+        "median_ms": 0.187,
+        "p95_ms": 0.2254,
+        "max_ms": 0.3563
+      }
+    },
+    {
+      "id": "scalar_enum",
+      "valid_exact": 5,
+      "invalid_rejected": 4,
+      "source_schema_bytes": 32,
+      "wire_schema_bytes": 176,
+      "wire_profile": {
+        "properties": 1,
+        "enum_values": 5,
+        "name_enum_chars": 12,
+        "max_depth": 1
+      },
+      "payloads": [
+        {
+          "source_bytes": 5,
+          "wire_bytes": 19
+        },
+        {
+          "source_bytes": 1,
+          "wire_bytes": 15
+        },
+        {
+          "source_bytes": 2,
+          "wire_bytes": 16
+        },
+        {
+          "source_bytes": 4,
+          "wire_bytes": 18
+        },
+        {
+          "source_bytes": 5,
+          "wire_bytes": 19
+        }
+      ],
+      "encode_decode": {
+        "n": 150,
+        "median_ms": 0.0504,
+        "p95_ms": 0.0585,
+        "max_ms": 0.0962
+      }
+    },
+    {
+      "id": "oneof_overlap",
+      "valid_exact": 3,
+      "invalid_rejected": 3,
+      "source_schema_bytes": 73,
+      "wire_schema_bytes": 456,
+      "wire_profile": {
+        "properties": 5,
+        "enum_values": 2,
+        "name_enum_chars": 35,
+        "max_depth": 2
+      },
+      "payloads": [
+        {
+          "source_bytes": 2,
+          "wire_bytes": 40
+        },
+        {
+          "source_bytes": 2,
+          "wire_bytes": 40
+        },
+        {
+          "source_bytes": 3,
+          "wire_bytes": 41
+        }
+      ],
+      "encode_decode": {
+        "n": 90,
+        "median_ms": 0.2251,
+        "p95_ms": 0.2517,
+        "max_ms": 0.4158
+      }
+    },
+    {
+      "id": "required_null",
+      "valid_exact": 2,
+      "invalid_rejected": 2,
+      "source_schema_bytes": 109,
+      "wire_schema_bytes": 208,
+      "wire_profile": {
+        "properties": 2,
+        "enum_values": 0,
+        "name_enum_chars": 10,
+        "max_depth": 2
+      },
+      "payloads": [
+        {
+          "source_bytes": 10,
+          "wire_bytes": 24
+        },
+        {
+          "source_bytes": 8,
+          "wire_bytes": 22
+        }
+      ],
+      "encode_decode": {
+        "n": 60,
+        "median_ms": 0.0924,
+        "p95_ms": 0.101,
+        "max_ms": 0.1097
+      }
+    }
+  ],
+  "baseline_roundtrips": [
+    {
+      "workflow": "patch",
+      "method": "require_and_close_identity",
+      "total": 5,
+      "wire_rejected": 4,
+      "exact": 1
+    },
+    {
+      "workflow": "patch",
+      "method": "nullable_fill_schema_aware_strip",
+      "total": 5,
+      "semantic_loss": 4,
+      "exact": 1
+    },
+    {
+      "workflow": "neutral",
+      "method": "require_and_close_identity",
+      "total": 2,
+      "exact": 2
+    },
+    {
+      "workflow": "neutral",
+      "method": "nullable_fill_schema_aware_strip",
+      "total": 2,
+      "exact": 2
+    },
+    {
+      "workflow": "typed_map",
+      "method": "require_and_close_identity",
+      "total": 3,
+      "exact": 1,
+      "wire_rejected": 2
+    },
+    {
+      "workflow": "typed_map",
+      "method": "nullable_fill_schema_aware_strip",
+      "total": 3,
+      "exact": 1,
+      "wire_rejected": 2
+    },
+    {
+      "workflow": "mixed_map",
+      "method": "require_and_close_identity",
+      "total": 3,
+      "wire_rejected": 3
+    },
+    {
+      "workflow": "mixed_map",
+      "method": "nullable_fill_schema_aware_strip",
+      "total": 3,
+      "semantic_loss": 1,
+      "wire_rejected": 2
+    },
+    {
+      "workflow": "nested",
+      "method": "require_and_close_identity",
+      "total": 4,
+      "wire_rejected": 3,
+      "exact": 1
+    },
+    {
+      "workflow": "nested",
+      "method": "nullable_fill_schema_aware_strip",
+      "total": 4,
+      "exact": 3,
+      "semantic_loss": 1
+    },
+    {
+      "workflow": "optional_union",
+      "method": "require_and_close_identity",
+      "total": 4,
+      "wire_rejected": 1,
+      "exact": 3
+    },
+    {
+      "workflow": "optional_union",
+      "method": "nullable_fill_schema_aware_strip",
+      "total": 4,
+      "exact": 4
+    },
+    {
+      "workflow": "local_ref",
+      "method": "require_and_close_identity",
+      "total": 3,
+      "wire_rejected": 1,
+      "exact": 2
+    },
+    {
+      "workflow": "local_ref",
+      "method": "nullable_fill_schema_aware_strip",
+      "total": 3,
+      "semantic_loss": 1,
+      "exact": 2
+    },
+    {
+      "workflow": "array_records",
+      "method": "require_and_close_identity",
+      "total": 3,
+      "exact": 2,
+      "wire_rejected": 1
+    },
+    {
+      "workflow": "array_records",
+      "method": "nullable_fill_schema_aware_strip",
+      "total": 3,
+      "exact": 3
+    },
+    {
+      "workflow": "nullable_map",
+      "method": "require_and_close_identity",
+      "total": 3,
+      "exact": 2,
+      "wire_rejected": 1
+    },
+    {
+      "workflow": "nullable_map",
+      "method": "nullable_fill_schema_aware_strip",
+      "total": 3,
+      "exact": 2,
+      "wire_rejected": 1
+    },
+    {
+      "workflow": "scalar_enum",
+      "method": "require_and_close_identity",
+      "total": 5,
+      "exact": 5
+    },
+    {
+      "workflow": "scalar_enum",
+      "method": "nullable_fill_schema_aware_strip",
+      "total": 5,
+      "exact": 5
+    },
+    {
+      "workflow": "oneof_overlap",
+      "method": "require_and_close_identity",
+      "total": 3,
+      "exact": 3
+    },
+    {
+      "workflow": "oneof_overlap",
+      "method": "nullable_fill_schema_aware_strip",
+      "total": 3,
+      "exact": 3
+    },
+    {
+      "workflow": "required_null",
+      "method": "require_and_close_identity",
+      "total": 2,
+      "exact": 2
+    },
+    {
+      "workflow": "required_null",
+      "method": "nullable_fill_schema_aware_strip",
+      "total": 2,
+      "exact": 2
+    }
+  ],
+  "external": [
+    {
+      "file": "additionalProperties.json",
+      "group_index": 0,
+      "description": "additionalProperties being false does not allow other properties",
+      "assertions": 6,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/patternProperties",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "additionalProperties.json",
+      "group_index": 1,
+      "description": "non-ASCII pattern with additionalProperties",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/patternProperties",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "additionalProperties.json",
+      "group_index": 2,
+      "description": "additionalProperties with schema",
+      "assertions": 3,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "additionalProperties.json",
+      "group_index": 3,
+      "description": "additionalProperties can exist by itself",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "additionalProperties.json",
+      "group_index": 4,
+      "description": "additionalProperties are allowed by default",
+      "assertions": 1,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "additionalProperties.json",
+      "group_index": 5,
+      "description": "additionalProperties does not look in applicators",
+      "assertions": 1,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/allOf",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "additionalProperties.json",
+      "group_index": 6,
+      "description": "additionalProperties with null valued instance properties",
+      "assertions": 1,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "additionalProperties.json",
+      "group_index": 7,
+      "description": "additionalProperties with propertyNames",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/propertyNames",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "additionalProperties.json",
+      "group_index": 8,
+      "description": "dependentSchemas with additionalProperties",
+      "assertions": 3,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/dependentSchemas",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "anyOf.json",
+      "group_index": 0,
+      "description": "anyOf",
+      "assertions": 4,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/anyOf/1",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "anyOf.json",
+      "group_index": 1,
+      "description": "anyOf with base schema",
+      "assertions": 3,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Union assertion siblings are outside the supported subset"
+      }
+    },
+    {
+      "file": "anyOf.json",
+      "group_index": 2,
+      "description": "anyOf with boolean schemas, all true",
+      "assertions": 1,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/anyOf/0",
+        "detail": "Boolean schemas are outside the supported subset"
+      }
+    },
+    {
+      "file": "anyOf.json",
+      "group_index": 3,
+      "description": "anyOf with boolean schemas, some true",
+      "assertions": 1,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/anyOf/0",
+        "detail": "Boolean schemas are outside the supported subset"
+      }
+    },
+    {
+      "file": "anyOf.json",
+      "group_index": 4,
+      "description": "anyOf with boolean schemas, all false",
+      "assertions": 1,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/anyOf/0",
+        "detail": "Boolean schemas are outside the supported subset"
+      }
+    },
+    {
+      "file": "anyOf.json",
+      "group_index": 5,
+      "description": "anyOf complex types",
+      "assertions": 4,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/anyOf/0",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "anyOf.json",
+      "group_index": 6,
+      "description": "anyOf with one empty schema",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/anyOf/1",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "anyOf.json",
+      "group_index": 7,
+      "description": "nested anyOf, to check validation semantics",
+      "assertions": 2,
+      "status": "exercised",
+      "assertions_passed": 2,
+      "failures": []
+    },
+    {
+      "file": "enum.json",
+      "group_index": 0,
+      "description": "simple enum validation",
+      "assertions": 2,
+      "status": "exercised",
+      "assertions_passed": 2,
+      "failures": []
+    },
+    {
+      "file": "enum.json",
+      "group_index": 1,
+      "description": "heterogeneous enum validation",
+      "assertions": 5,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Container-valued enums are not supported"
+      }
+    },
+    {
+      "file": "enum.json",
+      "group_index": 2,
+      "description": "heterogeneous enum-with-null validation",
+      "assertions": 3,
+      "status": "exercised",
+      "assertions_passed": 3,
+      "failures": []
+    },
+    {
+      "file": "enum.json",
+      "group_index": 3,
+      "description": "enums in properties",
+      "assertions": 6,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/additionalProperties",
+        "detail": "Untyped open objects need an explicit value schema"
+      }
+    },
+    {
+      "file": "enum.json",
+      "group_index": 4,
+      "description": "enum with escaped characters",
+      "assertions": 3,
+      "status": "exercised",
+      "assertions_passed": 3,
+      "failures": []
+    },
+    {
+      "file": "enum.json",
+      "group_index": 5,
+      "description": "enum with false does not match 0",
+      "assertions": 3,
+      "status": "exercised",
+      "assertions_passed": 3,
+      "failures": []
+    },
+    {
+      "file": "enum.json",
+      "group_index": 6,
+      "description": "enum with [false] does not match [0]",
+      "assertions": 3,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Container-valued enums are not supported"
+      }
+    },
+    {
+      "file": "enum.json",
+      "group_index": 7,
+      "description": "enum with true does not match 1",
+      "assertions": 3,
+      "status": "exercised",
+      "assertions_passed": 3,
+      "failures": []
+    },
+    {
+      "file": "enum.json",
+      "group_index": 8,
+      "description": "enum with [true] does not match [1]",
+      "assertions": 3,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Container-valued enums are not supported"
+      }
+    },
+    {
+      "file": "enum.json",
+      "group_index": 9,
+      "description": "enum with 0 does not match false",
+      "assertions": 3,
+      "status": "exercised",
+      "assertions_passed": 3,
+      "failures": []
+    },
+    {
+      "file": "enum.json",
+      "group_index": 10,
+      "description": "enum with [0] does not match [false]",
+      "assertions": 3,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Container-valued enums are not supported"
+      }
+    },
+    {
+      "file": "enum.json",
+      "group_index": 11,
+      "description": "enum with 1 does not match true",
+      "assertions": 3,
+      "status": "exercised",
+      "assertions_passed": 3,
+      "failures": []
+    },
+    {
+      "file": "enum.json",
+      "group_index": 12,
+      "description": "enum with [1] does not match [true]",
+      "assertions": 3,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Container-valued enums are not supported"
+      }
+    },
+    {
+      "file": "enum.json",
+      "group_index": 13,
+      "description": "nul characters in strings",
+      "assertions": 2,
+      "status": "exercised",
+      "assertions_passed": 2,
+      "failures": []
+    },
+    {
+      "file": "enum.json",
+      "group_index": 14,
+      "description": "empty enum",
+      "assertions": 6,
+      "status": "unsupported",
+      "reason": {
+        "code": "wire_profile",
+        "path": "/properties/arguments",
+        "detail": "Explicit type is required"
+      }
+    },
+    {
+      "file": "enum.json",
+      "group_index": 15,
+      "description": "characters with the same visual representation, but different number of codepoints",
+      "assertions": 2,
+      "status": "exercised",
+      "assertions_passed": 2,
+      "failures": []
+    },
+    {
+      "file": "items.json",
+      "group_index": 0,
+      "description": "a schema given for items",
+      "assertions": 4,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "items.json",
+      "group_index": 1,
+      "description": "items with boolean schema (true)",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "items.json",
+      "group_index": 2,
+      "description": "items with boolean schema (false)",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "items.json",
+      "group_index": 3,
+      "description": "items and subitems",
+      "assertions": 6,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/prefixItems",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "items.json",
+      "group_index": 4,
+      "description": "nested items",
+      "assertions": 3,
+      "status": "exercised",
+      "assertions_passed": 3,
+      "failures": []
+    },
+    {
+      "file": "items.json",
+      "group_index": 5,
+      "description": "prefixItems with no additional items allowed",
+      "assertions": 5,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/prefixItems",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "items.json",
+      "group_index": 6,
+      "description": "items does not look in applicators, valid case",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/allOf",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "items.json",
+      "group_index": 7,
+      "description": "prefixItems validation adjusts the starting index for items",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/prefixItems",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "items.json",
+      "group_index": 8,
+      "description": "items with heterogeneous array",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/prefixItems",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "items.json",
+      "group_index": 9,
+      "description": "items with null instance elements",
+      "assertions": 1,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "maxItems.json",
+      "group_index": 0,
+      "description": "maxItems validation",
+      "assertions": 4,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "maxItems.json",
+      "group_index": 1,
+      "description": "maxItems validation with a decimal",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "minimum.json",
+      "group_index": 0,
+      "description": "minimum validation",
+      "assertions": 4,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "minimum.json",
+      "group_index": 1,
+      "description": "minimum validation with signed integer",
+      "assertions": 7,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "properties.json",
+      "group_index": 0,
+      "description": "object properties validation",
+      "assertions": 6,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "properties.json",
+      "group_index": 1,
+      "description": "properties, patternProperties, additionalProperties interaction",
+      "assertions": 8,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/patternProperties",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "properties.json",
+      "group_index": 2,
+      "description": "properties with boolean schema",
+      "assertions": 4,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "properties.json",
+      "group_index": 3,
+      "description": "properties with escaped characters",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "properties.json",
+      "group_index": 4,
+      "description": "properties with null valued instance properties",
+      "assertions": 1,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "properties.json",
+      "group_index": 5,
+      "description": "properties whose names are Javascript object property names",
+      "assertions": 7,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 0,
+      "description": "root pointer ref",
+      "assertions": 4,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 1,
+      "description": "relative pointer ref to object",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 2,
+      "description": "relative pointer ref to array",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/prefixItems",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 3,
+      "description": "escaped pointer ref",
+      "assertions": 6,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 4,
+      "description": "nested refs",
+      "assertions": 2,
+      "status": "exercised",
+      "assertions_passed": 2,
+      "failures": []
+    },
+    {
+      "file": "ref.json",
+      "group_index": 5,
+      "description": "ref applies alongside sibling keywords",
+      "assertions": 3,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 6,
+      "description": "remote ref, containing refs itself",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$ref",
+        "detail": "Only literal local JSON Pointer references are supported"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 7,
+      "description": "property named $ref that is not a reference",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 8,
+      "description": "property named $ref, containing an actual $ref",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 9,
+      "description": "$ref to boolean schema true",
+      "assertions": 1,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$defs/bool",
+        "detail": "Boolean schemas are outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 10,
+      "description": "$ref to boolean schema false",
+      "assertions": 1,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$defs/bool",
+        "detail": "Boolean schemas are outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 11,
+      "description": "Recursive references between schemas",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 12,
+      "description": "refs with quote",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 13,
+      "description": "ref creates new scope when adjacent to keywords",
+      "assertions": 1,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Assertion siblings of $ref are not supported"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 14,
+      "description": "naive replacement of $ref with its destination is not correct",
+      "assertions": 3,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Container-valued enums are not supported"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 15,
+      "description": "refs with relative uris and defs",
+      "assertions": 3,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 16,
+      "description": "relative refs with absolute uris and defs",
+      "assertions": 3,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 17,
+      "description": "$id must be resolved against nearest parent, not just immediate parent",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 18,
+      "description": "order of evaluation: $id and $ref",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 19,
+      "description": "order of evaluation: $id and $anchor and $ref",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 20,
+      "description": "order of evaluation: $id and $ref on nested schema",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 21,
+      "description": "simple URN base URI with $ref via the URN",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 22,
+      "description": "simple URN base URI with JSON pointer",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 23,
+      "description": "URN base URI with NSS",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 24,
+      "description": "URN base URI with r-component",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 25,
+      "description": "URN base URI with q-component",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 26,
+      "description": "URN base URI with URN and JSON pointer ref",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 27,
+      "description": "URN base URI with URN and anchor ref",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 28,
+      "description": "URN ref with nested pointer ref",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$ref",
+        "detail": "Only literal local JSON Pointer references are supported"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 29,
+      "description": "ref to if",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/if",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 30,
+      "description": "ref to then",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/then",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 31,
+      "description": "ref to else",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/else",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 32,
+      "description": "ref with absolute-path-reference",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 33,
+      "description": "$id with file URI still resolves pointers - *nix",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 34,
+      "description": "$id with file URI still resolves pointers - windows",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$id",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "ref.json",
+      "group_index": 35,
+      "description": "empty tokens in $ref json-pointer",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/allOf",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "file": "required.json",
+      "group_index": 0,
+      "description": "required validation",
+      "assertions": 7,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "required.json",
+      "group_index": 1,
+      "description": "required default validation",
+      "assertions": 1,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "required.json",
+      "group_index": 2,
+      "description": "required with empty array",
+      "assertions": 1,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "required.json",
+      "group_index": 3,
+      "description": "required with escaped characters",
+      "assertions": 2,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "required.json",
+      "group_index": 4,
+      "description": "required properties whose names are Javascript object property names",
+      "assertions": 7,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "file": "type.json",
+      "group_index": 0,
+      "description": "integer type matches integers",
+      "assertions": 9,
+      "status": "exercised",
+      "assertions_passed": 9,
+      "failures": []
+    },
+    {
+      "file": "type.json",
+      "group_index": 1,
+      "description": "number type matches numbers",
+      "assertions": 9,
+      "status": "exercised",
+      "assertions_passed": 9,
+      "failures": []
+    },
+    {
+      "file": "type.json",
+      "group_index": 2,
+      "description": "string type matches strings",
+      "assertions": 9,
+      "status": "exercised",
+      "assertions_passed": 9,
+      "failures": []
+    },
+    {
+      "file": "type.json",
+      "group_index": 3,
+      "description": "object type matches objects",
+      "assertions": 7,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/additionalProperties",
+        "detail": "Untyped open objects need an explicit value schema"
+      }
+    },
+    {
+      "file": "type.json",
+      "group_index": 4,
+      "description": "array type matches arrays",
+      "assertions": 7,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/items",
+        "detail": "Boolean schemas are outside the supported subset"
+      }
+    },
+    {
+      "file": "type.json",
+      "group_index": 5,
+      "description": "boolean type matches booleans",
+      "assertions": 10,
+      "status": "exercised",
+      "assertions_passed": 10,
+      "failures": []
+    },
+    {
+      "file": "type.json",
+      "group_index": 6,
+      "description": "null type matches only the null object",
+      "assertions": 10,
+      "status": "exercised",
+      "assertions_passed": 10,
+      "failures": []
+    },
+    {
+      "file": "type.json",
+      "group_index": 7,
+      "description": "multiple types can be specified in an array",
+      "assertions": 7,
+      "status": "exercised",
+      "assertions_passed": 7,
+      "failures": []
+    },
+    {
+      "file": "type.json",
+      "group_index": 8,
+      "description": "type as array with one item",
+      "assertions": 2,
+      "status": "exercised",
+      "assertions_passed": 2,
+      "failures": []
+    },
+    {
+      "file": "type.json",
+      "group_index": 9,
+      "description": "type: array or object",
+      "assertions": 5,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/type/array/items",
+        "detail": "Boolean schemas are outside the supported subset"
+      }
+    },
+    {
+      "file": "type.json",
+      "group_index": 10,
+      "description": "type: array, object or null",
+      "assertions": 5,
+      "status": "unsupported",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/type/array/items",
+        "detail": "Boolean schemas are outside the supported subset"
+      }
+    }
+  ],
+  "hostile": [
+    {
+      "id": "missing_envelope",
+      "rejected": true,
+      "handler_calls": 0,
+      "reason": {
+        "code": "wire_invalid",
+        "path": "/arguments/name",
+        "detail": "Failed anyOf constraint"
+      }
+    },
+    {
+      "id": "absent_with_value",
+      "rejected": true,
+      "handler_calls": 0,
+      "reason": {
+        "code": "wire_invalid",
+        "path": "/arguments/name",
+        "detail": "Failed anyOf constraint"
+      }
+    },
+    {
+      "id": "missing_required",
+      "rejected": true,
+      "handler_calls": 0,
+      "reason": {
+        "code": "wire_invalid",
+        "path": "/arguments",
+        "detail": "Failed required constraint"
+      }
+    },
+    {
+      "id": "invalid_value",
+      "rejected": true,
+      "handler_calls": 0,
+      "reason": {
+        "code": "wire_invalid",
+        "path": "/arguments/name",
+        "detail": "Failed anyOf constraint"
+      }
+    },
+    {
+      "id": "extra_root",
+      "rejected": true,
+      "handler_calls": 0,
+      "reason": {
+        "code": "wire_invalid",
+        "path": "",
+        "detail": "Failed additionalProperties constraint"
+      }
+    },
+    {
+      "id": "duplicate_map_key",
+      "rejected": true,
+      "handler_calls": 0,
+      "reason": {
+        "code": "duplicate_map_key",
+        "path": "/arguments/entries/1/key",
+        "detail": "Duplicate or declared dictionary key"
+      }
+    },
+    {
+      "id": "declared_key_collision",
+      "rejected": true,
+      "handler_calls": 0,
+      "reason": {
+        "code": "duplicate_map_key",
+        "path": "/arguments/entries/0/key",
+        "detail": "Duplicate or declared dictionary key"
+      }
+    },
+    {
+      "id": "oneof_semantic_overlap",
+      "rejected": true,
+      "handler_calls": 0,
+      "reason": {
+        "code": "decoded_original_invalid",
+        "path": "",
+        "detail": "Failed oneOf constraint"
+      }
+    },
+    {
+      "id": "unknown_variant",
+      "rejected": true,
+      "handler_calls": 0,
+      "reason": {
+        "code": "wire_invalid",
+        "path": "/arguments",
+        "detail": "Failed anyOf constraint"
+      }
+    },
+    {
+      "id": "invalid_entry_value",
+      "rejected": true,
+      "handler_calls": 0,
+      "reason": {
+        "code": "wire_invalid",
+        "path": "/arguments/entries/0/value",
+        "detail": "Failed type constraint"
+      }
+    },
+    {
+      "id": "duplicate_json_key",
+      "rejected": true,
+      "handler_calls": 0,
+      "reason": {
+        "code": "duplicate_json_key",
+        "path": "",
+        "detail": "Duplicate object member"
+      }
+    },
+    {
+      "id": "nonfinite_json",
+      "rejected": true,
+      "handler_calls": 0,
+      "reason": {
+        "code": "not_json",
+        "path": "",
+        "detail": "Non-finite numbers are rejected"
+      }
+    }
+  ],
+  "unsupported": [
+    {
+      "id": "untyped_open_object",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/additionalProperties",
+        "detail": "Untyped open objects need an explicit value schema"
+      }
+    },
+    {
+      "id": "unconstrained",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Unconstrained or implicit types are not supported"
+      }
+    },
+    {
+      "id": "pattern_keys",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/patternProperties",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "id": "dependencies",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/dependentRequired",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "id": "allof",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/allOf",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "id": "recursive",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/properties/next/$ref",
+        "detail": "Recursive references are not supported"
+      }
+    },
+    {
+      "id": "remote_ref",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/$ref",
+        "detail": "Only literal local JSON Pointer references are supported"
+      }
+    },
+    {
+      "id": "unknown_keyword",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/customAssert",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "id": "tuple",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/prefixItems",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "id": "format",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/format",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "id": "unique_items",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "/uniqueItems",
+        "detail": "Keyword is outside the supported subset"
+      }
+    },
+    {
+      "id": "false_schema",
+      "reason": {
+        "code": "unsupported_schema",
+        "path": "",
+        "detail": "Boolean schemas are outside the supported subset"
+      }
+    }
+  ],
+  "installed_oss_schema_observations": [
+    {
+      "method": "openai_sdk_helper",
+      "workflow": "patch",
+      "original_valid_messages_accepted_without_transport": 1,
+      "original_valid_messages_total": 5,
+      "source_invalid_messages_accepted_by_emitted_schema_only": 0,
+      "note": "Schema observations only; a downstream source validator may reject relaxed constraints.",
+      "all_optional_null_wire_accepted": false,
+      "optional_nullable_name_is_required": true,
+      "explicit_null_name_allowed": true,
+      "omitted_nullable_name_allowed": false
+    },
+    {
+      "method": "openai_sdk_helper",
+      "workflow": "neutral",
+      "original_valid_messages_accepted_without_transport": 2,
+      "original_valid_messages_total": 2,
+      "source_invalid_messages_accepted_by_emitted_schema_only": 0,
+      "note": "Schema observations only; a downstream source validator may reject relaxed constraints."
+    },
+    {
+      "method": "openai_sdk_helper",
+      "workflow": "typed_map",
+      "original_valid_messages_accepted_without_transport": 3,
+      "original_valid_messages_total": 3,
+      "source_invalid_messages_accepted_by_emitted_schema_only": 0,
+      "note": "Schema observations only; a downstream source validator may reject relaxed constraints.",
+      "nonempty_dictionary_allowed": true,
+      "additional_properties": {
+        "type": "number"
+      },
+      "closed_object_contract": false
+    },
+    {
+      "method": "openai_sdk_helper",
+      "workflow": "mixed_map",
+      "original_valid_messages_accepted_without_transport": 2,
+      "original_valid_messages_total": 3,
+      "source_invalid_messages_accepted_by_emitted_schema_only": 0,
+      "note": "Schema observations only; a downstream source validator may reject relaxed constraints."
+    },
+    {
+      "method": "openai_sdk_helper",
+      "workflow": "required_null",
+      "original_valid_messages_accepted_without_transport": 2,
+      "original_valid_messages_total": 2,
+      "source_invalid_messages_accepted_by_emitted_schema_only": 0,
+      "note": "Schema observations only; a downstream source validator may reject relaxed constraints."
+    },
+    {
+      "method": "mastra_schema_layer",
+      "workflow": "patch",
+      "original_valid_messages_accepted_without_transport": 1,
+      "original_valid_messages_total": 5,
+      "source_invalid_messages_accepted_by_emitted_schema_only": 0,
+      "note": "Schema observations only; a downstream source validator may reject relaxed constraints.",
+      "all_optional_null_wire_accepted": true,
+      "optional_nullable_name_is_required": true,
+      "explicit_null_name_allowed": true,
+      "omitted_nullable_name_allowed": false
+    },
+    {
+      "method": "mastra_schema_layer",
+      "workflow": "neutral",
+      "original_valid_messages_accepted_without_transport": 2,
+      "original_valid_messages_total": 2,
+      "source_invalid_messages_accepted_by_emitted_schema_only": 1,
+      "note": "Schema observations only; a downstream source validator may reject relaxed constraints."
+    },
+    {
+      "method": "mastra_schema_layer",
+      "workflow": "typed_map",
+      "original_valid_messages_accepted_without_transport": 1,
+      "original_valid_messages_total": 3,
+      "source_invalid_messages_accepted_by_emitted_schema_only": 0,
+      "note": "Schema observations only; a downstream source validator may reject relaxed constraints.",
+      "nonempty_dictionary_allowed": false,
+      "additional_properties": false,
+      "closed_object_contract": true
+    },
+    {
+      "method": "mastra_schema_layer",
+      "workflow": "mixed_map",
+      "original_valid_messages_accepted_without_transport": 0,
+      "original_valid_messages_total": 3,
+      "source_invalid_messages_accepted_by_emitted_schema_only": 0,
+      "note": "Schema observations only; a downstream source validator may reject relaxed constraints."
+    },
+    {
+      "method": "mastra_schema_layer",
+      "workflow": "required_null",
+      "original_valid_messages_accepted_without_transport": 2,
+      "original_valid_messages_total": 2,
+      "source_invalid_messages_accepted_by_emitted_schema_only": 0,
+      "note": "Schema observations only; a downstream source validator may reject relaxed constraints."
+    }
+  ],
+  "totals": {
+    "local_valid_exact": 40,
+    "local_invalid_rejected": 36,
+    "hostile_rejected": 12,
+    "hostile_handler_calls": 0,
+    "unsupported_fixture_schemas": 12,
+    "external_groups_total": 105,
+    "external_groups_exercised": 19,
+    "external_assertions_total": 343,
+    "external_assertions_exercised": 87,
+    "external_assertion_failures": 0,
+    "external_assertions_excluded": 256,
+    "compile": {
+      "n": 12,
+      "median_ms": 1.4592,
+      "p95_ms": 2.3994,
+      "max_ms": 2.3994
+    },
+    "encode_decode": {
+      "n": 1200,
+      "median_ms": 0.1991,
+      "p95_ms": 0.4917,
+      "max_ms": 0.6629
+    }
+  },
+  "gate_checks": {
+    "external_minimum_40": true,
+    "external_zero_disagreements": true,
+    "local_roundtrips_and_rejections": true,
+    "hostile_zero_handler_calls": true,
+    "wire_profiles_pass": true,
+    "latency_median_below_20ms": true,
+    "latency_p95_below_50ms": true,
+    "presence_and_map_advantage_over_baselines": true,
+    "neutral_baselines_equal": true
+  },
+  "input_hashes": {
+    "bench/fixtures/hostile.json": "02ecfcaf6aa4c600eb58e74a40a7130d39823d3bf08165de67f127defeb2a2a6",
+    "bench/fixtures/unsupported.json": "490e4f55890fd5474a0459e4833cd433e200200049e9da8bdcf83e2e99bd3e24",
+    "bench/fixtures/workflows.json": "6788734e6a5b41acde72be68a733033457e072aba506eecdbfcaf7b0eecc63eb",
+    "bench/external/additionalProperties.json": "b96bd533416386ac6421737b48c5c072870ab5dbea910585e9e8fa6305c7ca91",
+    "bench/external/anyOf.json": "7a6fe41602496c256334ffa3e6fb457b26ac23b97ca03cb16b724ad21a7d216d",
+    "bench/external/enum.json": "1abe7eb883bde4a78c62f08e484e16f32b72ca5c1be725aa54d85cc4546b5031",
+    "bench/external/items.json": "d924a8171f1f1d04ff026a4e3491d1376297145563158543005b7073b69ab913",
+    "bench/external/LICENSE": "837402bd25fad9b704265801ca3f92566a98157c1f9a7acd6f446299ba1c305a",
+    "bench/external/maxItems.json": "59fa6236c0766aaac5fb7c9ef82e205c230efa94271485f614218291be7cbc5c",
+    "bench/external/minimum.json": "f6a29cb574b76621da23636a636cf12cb31b01646b89543e6ce1a813376439a3",
+    "bench/external/properties.json": "58f01566cfe3e1fc4fb851d3b2eab13768d65ba5dbc4e9f9387ceaf4244a0522",
+    "bench/external/ref.json": "ae53f3f57c220879729225eb416cecac909f06b5adaf15f799b4f3e7c0612998",
+    "bench/external/required.json": "3e3900dd0e546c1cb4aaab6b24ea0e06a8f7f8c05b272dcc87e85332501ed42e",
+    "bench/external/SOURCES.json": "827cebe3a082fb27ba57e0b28e7a0fb87ff9a53affef5ee6607b22de55332032",
+    "bench/external/type.json": "4c5cbe6cbcd28af73761091367b20e07d0403847e236c06c31fc27061bd81192"
+  }
+}

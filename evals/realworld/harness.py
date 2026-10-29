@@ -478,18 +478,24 @@ def summarize(plan,events):
 
 
 def main():
+    global ARTIFACTS
     parser=argparse.ArgumentParser(description=__doc__)
     sub=parser.add_subparsers(dest="command",required=True)
-    sub.add_parser("prepare")
+    preparation=sub.add_parser("prepare")
+    preparation.add_argument("--output",required=True,help="Fresh directory for a new offline plan; historical artifacts are never overwritten")
     live=sub.add_parser("live")
     live.add_argument("--authorization",required=True)
     live.add_argument("--allow-spend",action="store_true")
     live.add_argument("--max-usd",type=float,required=True)
     live.add_argument("--output",required=True)
+    live.add_argument("--plan",required=True,help="Explicit prepared plan.json to execute after approval")
     args=parser.parse_args()
     if args.command=="prepare":
+        ARTIFACTS=Path(args.output).resolve()
+        if ARTIFACTS.exists():
+            parser.error("Preparation output must be a fresh directory; existing evidence is preserved")
         prepare(); return 0
-    plan=read(ARTIFACTS/"plan.json")
+    plan=read(args.plan)
     auth=read(args.authorization)
     authorize(plan,auth,args.max_usd,args.allow_spend)
     # No credential lookup, API client or network transport exists before this point.

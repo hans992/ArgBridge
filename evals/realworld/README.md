@@ -12,12 +12,12 @@ Use a separate virtual environment to avoid replacing the historical benchmark d
     .venv-eval/Scripts/python -m pip install -r evals/realworld/requirements-lock.txt
     .venv-eval/Scripts/python -m pip install --no-build-isolation --no-deps -e .
     npm --prefix bench/node ci --ignore-scripts --no-audit --no-fund
-    .venv-eval/Scripts/python -m evals.realworld.harness prepare
+    .venv-eval/Scripts/python -m evals.realworld.harness prepare --output evals/realworld/runs/prepared-new
     .venv-eval/Scripts/python -m pytest tests/test_realworld.py -q
 
 Use .venv-eval/bin/python on macOS/Linux. Node must be on PATH, or set ARGBRIDGE_NODE_BIN to its executable. tiktoken may download its public tokenizer data the first time; TIKTOKEN_CACHE_DIR can select a local cache. This download is not inference.
 
-The generated plan.json contains all request bodies and is intentionally gitignored because it repeats the frozen corpus almost a thousand times. Its hash is published in artifacts/offline.json. Regeneration is deterministic for the recorded dependency versions and source bytes. No API key is read by prepare.
+The generated plan.json contains all request bodies and is intentionally gitignored because it repeats the frozen corpus almost a thousand times. Preparation requires a fresh output directory and writes its own offline.json and disabled approval template there. No API key is read by prepare. The checked-in artifacts/offline.json belongs to the historical source at commit `a9cd459c8cd58624af8102e1dc714c81678a79f9`; only that exact source and dependency set reproduces its plan hash. The alpha's revised explicit-path manual comparator is separate from this frozen six-arm harness.
 
 ## Dataset and oracle
 
@@ -84,7 +84,7 @@ The checked-in authorization.example.json is disabled. An actual approval file a
 
 Example after explicit approval, with a locally created authorization file:
 
-    python -m evals.realworld.harness live --authorization evals/realworld/authorization.local.json --allow-spend --max-usd 5 --output evals/realworld/runs/run-001
+    python -m evals.realworld.harness live --plan evals/realworld/runs/prepared-new/plan.json --authorization evals/realworld/authorization.local.json --allow-spend --max-usd 5 --output evals/realworld/runs/run-001
 
 Do not edit an approved plan or code underneath a run. Regenerate and review it if changes are needed.
 
@@ -96,7 +96,7 @@ The completed run supports acceptance of the submitted schemas and measured accu
 
 ## Recompute the published live analysis without inference
 
-After reproducing the offline preparation above (which recreates the hashed plan), run:
+Use a disposable checkout of historical commit `a9cd459c8cd58624af8102e1dc714c81678a79f9`, its pinned evaluation environment and its original `prepare` command (without --output) to recreate the hashed plan. Then, in that checkout, run:
 
     python evals/realworld/analysis/report.py . evals/realworld/artifacts/live-2026-10-29 analysis.local.json
 

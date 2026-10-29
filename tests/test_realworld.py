@@ -17,6 +17,19 @@ from argbridge import Compiled, canonical
 from evals.realworld import harness as h, manual
 from evals.realworld.compact import compact_schema, expand_local_refs
 
+pytestmark = pytest.mark.evaluation
+
+def test_prepare_cannot_overwrite_existing_artifacts(tmp_path,monkeypatch):
+    monkeypatch.setattr(sys,"argv",["harness","prepare","--output",str(tmp_path)])
+    previous=h.ARTIFACTS
+    try:
+        with pytest.raises(SystemExit) as exc:
+            h.main()
+        assert exc.value.code==2
+        assert list(tmp_path.iterdir())==[]
+    finally:
+        h.ARTIFACTS=previous
+
 @pytest.fixture(autouse=True)
 def forbid_inference_network(monkeypatch):
     def blocked(*a,**kw):

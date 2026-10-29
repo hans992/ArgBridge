@@ -1,4 +1,5 @@
 """A bounded, reversible JSON argument codec. No model calls or remote resolution."""
+
 from __future__ import annotations
 
 from copy import deepcopy
@@ -16,7 +17,16 @@ from referencing.exceptions import NoSuchResource
 MAX_BYTES = 1_000_000
 MAX_NODES = 20_000
 MAX_DATA_DEPTH = 64
-ANNOTATIONS = {"title", "description", "default", "examples", "$comment", "deprecated", "readOnly", "writeOnly"}
+ANNOTATIONS = {
+    "title",
+    "description",
+    "default",
+    "examples",
+    "$comment",
+    "deprecated",
+    "readOnly",
+    "writeOnly",
+}
 META = ANNOTATIONS | {"$defs", "$schema"}
 NUMERIC = {"minimum", "maximum", "exclusiveMinimum", "exclusiveMaximum", "multipleOf"}
 OBJECT = {"properties", "required", "additionalProperties"}
@@ -26,7 +36,9 @@ TYPES = {"string", "number", "integer", "boolean", "null", "object", "array"}
 
 
 def pointer(parts) -> str:
-    return "/" + "/".join(str(p).replace("~", "~0").replace("/", "~1") for p in parts) if parts else ""
+    return (
+        "/" + "/".join(str(p).replace("~", "~0").replace("/", "~1") for p in parts) if parts else ""
+    )
 
 
 class BridgeError(ValueError):
@@ -47,7 +59,9 @@ def _deny_remote(uri):
 
 
 def canonical(value) -> str:
-    return json.dumps(value, ensure_ascii=False, allow_nan=False, sort_keys=True, separators=(",", ":"))
+    return json.dumps(
+        value, ensure_ascii=False, allow_nan=False, sort_keys=True, separators=(",", ":")
+    )
 
 
 def check_json(value):
@@ -61,19 +75,30 @@ def check_json(value):
         if type(current) is dict:
             if any(type(k) is not str for k in current):
                 raise BridgeError("not_json", "", "Object keys must be strings")
+            if count + len(stack) + len(current) > MAX_NODES:
+                raise BridgeError("resource_limit", "", "JSON node/depth budget exceeded")
             stack.extend((v, depth + 1) for v in current.values())
         elif type(current) is list:
+            if count + len(stack) + len(current) > MAX_NODES:
+                raise BridgeError("resource_limit", "", "JSON node/depth budget exceeded")
             stack.extend((v, depth + 1) for v in current)
         elif type(current) not in (str, int, float, bool, type(None)):
             raise BridgeError("not_json", "", "Only JSON values are supported")
         elif type(current) is float and not math.isfinite(current):
             raise BridgeError("not_json", "", "Non-finite numbers are rejected")
     try:
-        size = len(canonical(value).encode("utf-8"))
+        size = 0
+        encoder = json.JSONEncoder(
+            ensure_ascii=False, allow_nan=False, sort_keys=True, separators=(",", ":")
+        )
+        for chunk in encoder.iterencode(value):
+            size += len(chunk.encode("utf-8"))
+            if size > MAX_BYTES:
+                raise BridgeError("resource_limit", "", "JSON byte budget exceeded")
+    except BridgeError:
+        raise
     except (ValueError, UnicodeError, RecursionError) as exc:
         raise BridgeError("not_json", "", "Value is not bounded UTF-8 JSON") from exc
-    if size > MAX_BYTES:
-        raise BridgeError("resource_limit", "", "JSON byte budget exceeded")
 
 
 def loads(raw: str):
@@ -102,35 +127,60 @@ def loads(raw: str):
 
 
 def closed(properties):
-    return {"type": "object", "properties": properties, "required": list(properties), "additionalProperties": False}
+    return {
+        "type": "object",
+        "properties": properties,
+        "required": list(properties),
+        "additionalProperties": False,
+    }
 
 
 def presence(schema):
-    return {"anyOf": [
-        closed({"state": {"type": "string", "enum": ["absent"]}}),
-        closed({"state": {"type": "string", "enum": ["present"]}, "value": schema}),
-    ], "description": "Use absent to omit this field; present retains value, including an explicitly allowed null."}
+    return {
+        "anyOf": [
+            closed({"state": {"type": "string", "enum": ["absent"]}}),
+            closed({"state": {"type": "string", "enum": ["present"]}, "value": schema}),
+        ],
+        "description": "Use absent to omit this field; present retains value, including an explicitly allowed null.",
+    }
 
 
 def _validate(validator, value, code):
     error = next(validator.iter_errors(value), None)
     if error is not None:
         # Do not copy jsonschema's message: it can contain argument values.
-        raise BridgeError(code, pointer(error.absolute_path), f"Failed {error.validator} constraint")
+        raise BridgeError(
+            code, pointer(error.absolute_path), f"Failed {error.validator} constraint"
+        )
 
 
 def strict_profile(schema):
     """Offline conservative shape check, NOT a live-provider acceptance claim."""
     totals = {"properties": 0, "enum_values": 0, "name_enum_chars": 0, "max_depth": 0}
-    allowed = {"type", "properties", "required", "additionalProperties", "items", "anyOf",
-               "enum", "description", "title", "minItems", "maxItems"} | NUMERIC
+    allowed = {
+        "type",
+        "properties",
+        "required",
+        "additionalProperties",
+        "items",
+        "anyOf",
+        "enum",
+        "description",
+        "title",
+        "minItems",
+        "maxItems",
+    } | NUMERIC
 
     def walk(s, depth, path):
         if not isinstance(s, dict) or set(s) - allowed:
-            raise UnsupportedSchema("wire_profile", path, "Unsupported wire keyword or boolean schema")
+            raise UnsupportedSchema(
+                "wire_profile", path, "Unsupported wire keyword or boolean schema"
+            )
         if "anyOf" in s:
             if set(s) - {"anyOf", "description", "title"}:
-                raise UnsupportedSchema("wire_profile", path, "Compound anyOf siblings are outside this profile")
+                raise UnsupportedSchema(
+                    "wire_profile", path, "Compound anyOf siblings are outside this profile"
+                )
             for i, branch in enumerate(s["anyOf"]):
                 walk(branch, depth, path + "/anyOf/" + str(i))
             return
@@ -139,7 +189,9 @@ def strict_profile(schema):
         if not types or any(t not in TYPES for t in types):
             raise UnsupportedSchema("wire_profile", path, "Explicit type is required")
         if len(types) > 1 and any(t in {"object", "array"} for t in types):
-            raise UnsupportedSchema("wire_profile", path, "Container unions require tagged branches")
+            raise UnsupportedSchema(
+                "wire_profile", path, "Container unions require tagged branches"
+            )
         if typ in ("object", "array"):
             depth += 1
             totals["max_depth"] = max(totals["max_depth"], depth)
@@ -147,8 +199,12 @@ def strict_profile(schema):
             raise UnsupportedSchema("wire_limit", path, "Wire nesting exceeds ten containers")
         if typ == "object":
             props = s.get("properties", {})
-            if s.get("additionalProperties") is not False or set(s.get("required", [])) != set(props):
-                raise UnsupportedSchema("wire_profile", path, "Objects must be closed with every property required")
+            if s.get("additionalProperties") is not False or set(s.get("required", [])) != set(
+                props
+            ):
+                raise UnsupportedSchema(
+                    "wire_profile", path, "Objects must be closed with every property required"
+                )
             totals["properties"] += len(props)
             totals["name_enum_chars"] += sum(map(len, props))
             for name, child in props.items():
@@ -163,12 +219,18 @@ def strict_profile(schema):
             chars = sum(len(v) for v in values if isinstance(v, str))
             totals["name_enum_chars"] += chars
             if len(values) > 250 and chars > 15000:
-                raise UnsupportedSchema("wire_limit", path, "Large string enum exceeds character budget")
+                raise UnsupportedSchema(
+                    "wire_limit", path, "Large string enum exceeds character budget"
+                )
 
     if schema.get("type") != "object" or "anyOf" in schema:
         raise UnsupportedSchema("wire_profile", "", "Wire root must be an object")
     walk(schema, 0, "")
-    if totals["properties"] > 5000 or totals["enum_values"] > 1000 or totals["name_enum_chars"] > 120000:
+    if (
+        totals["properties"] > 5000
+        or totals["enum_values"] > 1000
+        or totals["name_enum_chars"] > 120000
+    ):
         raise UnsupportedSchema("wire_limit", "", "Wire property/enum/character budget exceeded")
     return totals
 
@@ -192,7 +254,9 @@ class _Node:
             for i, child in enumerate(self.variants):
                 if child.validator.is_valid(value):
                     return {"variant": str(i), "value": child.encode(value)}
-            raise BridgeError("internal_union", "", "No branch matches a previously validated input")
+            raise BridgeError(
+                "internal_union", "", "No branch matches a previously validated input"
+            )
         fields = {}
         for k, child in self.children.items():
             if k in self.required:
@@ -203,7 +267,11 @@ class _Node:
                 fields[k] = {"state": "absent"}
         if self.extra is None:
             return fields
-        entries = [{"key": k, "value": self.extra.encode(v)} for k, v in value.items() if k not in self.children]
+        entries = [
+            {"key": k, "value": self.extra.encode(v)}
+            for k, v in value.items()
+            if k not in self.children
+        ]
         return {"fields": fields, "entries": entries} if self.children else {"entries": entries}
 
     def decode(self, value, path=()):
@@ -225,8 +293,11 @@ class _Node:
             for i, entry in enumerate(value["entries"]):
                 key = entry["key"]
                 if key in result or key in self.children:
-                    raise BridgeError("duplicate_map_key", pointer((*path, "entries", i, "key")),
-                                      "Duplicate or declared dictionary key")
+                    raise BridgeError(
+                        "duplicate_map_key",
+                        pointer((*path, "entries", i, "key")),
+                        "Duplicate or declared dictionary key",
+                    )
                 result[key] = self.extra.decode(entry["value"], (*path, "entries", i, "value"))
         return result
 
@@ -251,7 +322,11 @@ class _Compiler:
             token = part.replace("~1", "/").replace("~0", "~")
             try:
                 if isinstance(current, list):
-                    if not token.isascii() or not token.isdecimal() or (token.startswith("0") and token != "0"):
+                    if (
+                        not token.isascii()
+                        or not token.isdecimal()
+                        or (token.startswith("0") and token != "0")
+                    ):
                         self.fail(path, "Invalid array index in JSON Pointer")
                     current = current[int(token)]
                 else:
@@ -268,9 +343,10 @@ class _Compiler:
             self.fail(path, "Boolean schemas are outside the supported subset")
         bad = set(s) - ALLOWED
         if bad:
-            self.fail(path + "/" + sorted(bad)[0], "Keyword is outside the supported subset")
+            self.fail(path + pointer([sorted(bad)[0]]), "Keyword is outside the supported subset")
         if "$schema" in s and s["$schema"] not in (
-            "https://json-schema.org/draft/2020-12/schema", "https://json-schema.org/draft/2020-12/schema#"
+            "https://json-schema.org/draft/2020-12/schema",
+            "https://json-schema.org/draft/2020-12/schema#",
         ):
             self.fail(path + "/$schema", "Only Draft 2020-12 is supported")
         if "$ref" in s:
@@ -289,8 +365,10 @@ class _Compiler:
         if union_key:
             if set(s) - META - {union_key}:
                 self.fail(path, "Union assertion siblings are outside the supported subset")
-            variants = [self.compile(v, path + "/" + union_key + "/" + str(i), active, depth + 1)
-                        for i, v in enumerate(s[union_key])]
+            variants = [
+                self.compile(v, path + "/" + union_key + "/" + str(i), active, depth + 1)
+                for i, v in enumerate(s[union_key])
+            ]
             node = self.union(variants, validator)
             node.wire.update({k: s[k] for k in ("title", "description") if k in s})
             return node
@@ -317,22 +395,38 @@ class _Compiler:
             if "enum" in s or "const" in s:
                 self.fail(path, "Container-valued constraints are not supported")
             props = s.get("properties", {})
-            children = {k: self.compile(v, path + "/properties" + pointer([k]), active, depth + 1)
-                        for k, v in props.items()}
+            children = {
+                k: self.compile(v, path + "/properties" + pointer([k]), active, depth + 1)
+                for k, v in props.items()
+            }
             required = frozenset(s.get("required", []))
             if required - set(props):
                 self.fail(path + "/required", "Required undeclared keys are not supported")
             extra_schema = s.get("additionalProperties", True)
             if extra_schema is True:
-                self.fail(path + "/additionalProperties", "Untyped open objects need an explicit value schema")
-            fields = closed({k: child.wire if k in required else presence(child.wire)
-                             for k, child in children.items()})
+                self.fail(
+                    path + "/additionalProperties",
+                    "Untyped open objects need an explicit value schema",
+                )
+            fields = closed(
+                {
+                    k: child.wire if k in required else presence(child.wire)
+                    for k, child in children.items()
+                }
+            )
             extra = None
             wire = fields
             if extra_schema is not False:
-                extra = self.compile(extra_schema, path + "/additionalProperties", active, depth + 1)
-                entries = {"type": "array", "items": closed({"key": {"type": "string"}, "value": extra.wire})}
-                wire = closed({"fields": fields, "entries": entries} if children else {"entries": entries})
+                extra = self.compile(
+                    extra_schema, path + "/additionalProperties", active, depth + 1
+                )
+                entries = {
+                    "type": "array",
+                    "items": closed({"key": {"type": "string"}, "value": extra.wire}),
+                }
+                wire = closed(
+                    {"fields": fields, "entries": entries} if children else {"entries": entries}
+                )
             wire.update(annotations)
             return _Node("object", wire, validator, children, required, extra)
         if typ == "array":
@@ -343,7 +437,9 @@ class _Compiler:
             wire.update({k: s[k] for k in ("minItems", "maxItems") if k in s})
             return _Node("array", wire, validator, extra=child)
         wire = {"type": typ, **annotations}
-        wire.update({k: s[k] for k in NUMERIC if k in s and any(t in ("number", "integer") for t in types)})
+        wire.update(
+            {k: s[k] for k in NUMERIC if k in s and any(t in ("number", "integer") for t in types)}
+        )
         if "enum" in s or "const" in s:
             values = s.get("enum", [s.get("const")])
             if any(type(v) in (dict, list) for v in values):
@@ -353,40 +449,63 @@ class _Compiler:
 
     @staticmethod
     def json_type(v):
-        return {str: "string", int: "integer", float: "number", bool: "boolean", type(None): "null"}[type(v)]
+        return {
+            str: "string",
+            int: "integer",
+            float: "number",
+            bool: "boolean",
+            type(None): "null",
+        }[type(v)]
 
     @staticmethod
     def union(variants, validator):
-        wire = {"anyOf": [closed({"variant": {"type": "string", "enum": [str(i)]}, "value": v.wire})
-                          for i, v in enumerate(variants)]}
+        wire = {
+            "anyOf": [
+                closed({"variant": {"type": "string", "enum": [str(i)]}, "value": v.wire})
+                for i, v in enumerate(variants)
+            ]
+        }
         return _Node("union", wire, validator, variants=variants)
 
 
 class Compiled:
     """Compile once, then encode or decode bounded JSON values without side effects."""
-    def __init__(self, schema):
+
+    def __init__(self, schema: dict[str, Any]):
         check_json(schema)
         self._source = deepcopy(schema)
         try:
             Draft202012Validator.check_schema(self._source)
         except SchemaError as exc:
-            raise UnsupportedSchema("invalid_schema", pointer(exc.path), "Invalid Draft 2020-12 schema") from exc
-        self._original = Draft202012Validator(self._source, registry=Registry(retrieve=_deny_remote))
+            raise UnsupportedSchema(
+                "invalid_schema", pointer(exc.path), "Invalid Draft 2020-12 schema"
+            ) from exc
+        self._original = Draft202012Validator(
+            self._source, registry=Registry(retrieve=_deny_remote)
+        )
         self._node = _Compiler(self._source, self._original).compile(self._source)
         self._wire = closed({"arguments": self._node.wire})
+        try:
+            check_json(self._wire)
+        except BridgeError as exc:
+            raise UnsupportedSchema(
+                "wire_limit", "", "Expanded wire schema exceeds JSON resource limits"
+            ) from exc
         self.profile = strict_profile(self._wire)
         self._wire_validator = Draft202012Validator(self._wire)
         self.fingerprint = hashlib.sha256(canonical(self._source).encode("utf-8")).hexdigest()
 
     @property
-    def wire_schema(self):
+    def wire_schema(self) -> dict[str, Any]:
+        """Return an independent copy of the emitted strict tool parameters."""
         return deepcopy(self._wire)
 
     @property
-    def source_schema(self):
+    def source_schema(self) -> dict[str, Any]:
         return deepcopy(self._source)
 
-    def encode(self, value):
+    def encode(self, value: Any) -> dict[str, Any]:
+        """Validate a source value and encode its exact member presence."""
         check_json(value)
         _validate(self._original, value, "original_invalid")
         result = {"arguments": self._node.encode(value)}
@@ -394,7 +513,8 @@ class Compiled:
         _validate(self._wire_validator, result, "internal_wire_invalid")
         return result
 
-    def decode(self, wire):
+    def decode(self, wire: Any) -> Any:
+        """Validate wire data, reconstruct JSON, then enforce the source contract."""
         check_json(wire)
         _validate(self._wire_validator, wire, "wire_invalid")
         result = self._node.decode(wire["arguments"], ("arguments",))
@@ -406,18 +526,31 @@ class Compiled:
         return handler(self.decode(wire))
 
     def bundle(self):
-        return {"format": "argbridge-v1", "source_sha256": self.fingerprint,
-                "source_schema": self.source_schema, "wire_schema": self.wire_schema}
+        result = {
+            "format": "argbridge-v1",
+            "source_sha256": self.fingerprint,
+            "source_schema": self.source_schema,
+            "wire_schema": self.wire_schema,
+        }
+        # A produced bundle must fit the same limits imposed by from_bundle.
+        check_json(result)
+        return result
 
     @classmethod
     def from_bundle(cls, bundle):
         check_json(bundle)
-        if not isinstance(bundle, dict) or set(bundle) != {"format", "source_sha256", "source_schema", "wire_schema"}:
+        if not isinstance(bundle, dict) or set(bundle) != {
+            "format",
+            "source_sha256",
+            "source_schema",
+            "wire_schema",
+        }:
             raise BridgeError("invalid_bundle", "", "Unexpected bundle fields")
         if bundle["format"] != "argbridge-v1":
             raise BridgeError("invalid_bundle", "/format", "Unsupported bundle format")
         result = cls(bundle["source_schema"])
-        if bundle["source_sha256"] != result.fingerprint or canonical(bundle["wire_schema"]) != canonical(result._wire):
+        if bundle["source_sha256"] != result.fingerprint or canonical(
+            bundle["wire_schema"]
+        ) != canonical(result._wire):
             raise BridgeError("invalid_bundle", "", "Bundle hash/schema mismatch")
         return result
-

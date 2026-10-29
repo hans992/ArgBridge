@@ -1,0 +1,28 @@
+{
+  "platform": "Windows 11",
+  "python": "3.12.14",
+  "inference_calls": 0,
+  "hosted_ci": "not run",
+  "runs": [
+    {
+      "scope": "full suite, including SDK mock and optional evaluation",
+      "tests": "110",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "21.458"
+    },
+    {
+      "scope": "core with minimum direct runtime dependencies",
+      "tests": "81",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "14.487"
+    }
+  ],
+  "minimum_dependencies": {
+    "jsonschema": "4.23.0",
+    "referencing": "0.35.1"
+  }
+}
