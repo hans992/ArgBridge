@@ -11,6 +11,7 @@ Initial developer-facing alpha, prepared from the published research snapshot.
 - Bound CLI file reads before parsing and make non-ASCII JSON output usable on legacy Windows consoles.
 - Declare the directly imported `referencing` dependency explicitly.
 - Escape unsupported keyword names correctly in JSON Pointer error paths.
+- Initialize the CI tokenizer cache inside a runner step; the runner context is unavailable in job-level environment expressions.
 
 ### Added
 
