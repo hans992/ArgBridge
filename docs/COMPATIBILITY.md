@@ -1,6 +1,6 @@
 # Compatibility
 
-The release candidate requires CPython 3.11 or newer. Python 3.11–3.15 are configured in the Windows/Linux CI matrix. Local release checks were run on CPython 3.12.14 and Windows; the remaining matrix is pending CI execution after publication approval. CI configuration alone is not a passing result. macOS and alternative interpreters are not locally verified.
+The release candidate requires CPython 3.11 or newer. The Windows/Linux CPython 3.11–3.15 CI matrix passed at commit `3f4eadf` on 29 October 2026, with 81 core tests in every job. The separate Linux Python 3.12 evaluation job passed 29 tests. [CI results](CI_RESULTS.md) record the exact patch versions and scope. Local release checks also passed on Windows/CPython 3.12.14. macOS, alternative interpreters and every patch-version/dependency combination remain unverified.
 
 The runtime declares `jsonschema>=4.23,<5` and `referencing>=0.35.1,<1`. The current local environment uses 4.26.0 and 0.37.0. Core installation needs no Node, OpenAI SDK, model, tokenizer or credentials.
 

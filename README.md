@@ -12,7 +12,7 @@ For a patch-style API, these can be three different operations:
 
 Making every optional field nullable can collapse the first two cases. ArgBridge compiles a supported subset of JSON Schema into an explicit wire representation and reconstructs the original JSON after validation. Typed dictionaries are transported as key/value entries, with duplicate keys rejected.
 
-**Experimental alpha: 0.1.0a1 release candidate.** The candidate is prepared locally; it is not yet a published PyPI package. The current public research snapshot and its evidence remain available. No production-readiness or model-accuracy improvement is claimed.
+**Experimental alpha: 0.1.0a1 release candidate.** The candidate is available on the `release/0.1.0a1` branch; it is not yet a published PyPI package. [Hosted CI passed all 13 jobs](docs/CI_RESULTS.md), including Windows/Linux Python 3.11–3.15. No production-readiness or model-accuracy improvement is claimed.
 
 [API](docs/API.md) · [Supported schemas](docs/SUPPORTED_SCHEMAS.md) · [Architecture](docs/ARCHITECTURE.md) · [Compatibility](docs/COMPATIBILITY.md) · [MIT license](LICENSE)
 
@@ -48,7 +48,7 @@ clear: {"name":null}
 replace: {"name":"Grace"}
 ```
 
-No model, API key or Node installation is required. Python 3.11+ is required; see the distinction between locally tested and CI-targeted versions in [compatibility](docs/COMPATIBILITY.md).
+No model, API key or Node installation is required. Python 3.11+ is required; see the verified versions and remaining limits in [compatibility](docs/COMPATIBILITY.md).
 
 ## Python API
 
@@ -113,7 +113,7 @@ python -m pip install -e ".[test]"
 python -m pytest -m "not evaluation" -q
 ```
 
-[Reproduction and packaging](docs/REPRODUCING.md) explains the separate optional SDK environment, immutable historical evidence and new output directories. CI is prepared for Windows/Linux and CPython 3.11–3.15; hosted results are pending publication approval, so no passing badge is displayed.
+[Reproduction and packaging](docs/REPRODUCING.md) explains the separate optional SDK environment, immutable historical evidence and new output directories. [CI results](docs/CI_RESULTS.md) record the verified commit, test counts, packaging checks and the initial workflow startup defect.
 
 See [CONTRIBUTING](CONTRIBUTING.md), the [code of conduct](CODE_OF_CONDUCT.md) and [changelog](CHANGELOG.md). Reports should contain minimal synthetic schemas and clear expected behavior. Credentials, customer data and private planning do not belong in the repository.
 

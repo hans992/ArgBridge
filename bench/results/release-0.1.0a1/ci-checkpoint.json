@@ -1,0 +1,145 @@
+{
+  "date": "2026-10-29",
+  "run_id": 40846877084,
+  "url": "https://github.com/hans992/ArgBridge/actions/runs/40846877084",
+  "commit": "3f4eadf5139c44099a8eb48c27682a3e434d38ec",
+  "event": "push",
+  "status": "completed",
+  "conclusion": "success",
+  "expected_jobs": 13,
+  "jobs": [
+    {
+      "id": 123356419609,
+      "name": "package",
+      "conclusion": "success",
+      "testSummary": [
+        "Successfully set up CPython (3.12.15)",
+        "{\"version\": \"0.1.0a1\", \"installed_wheel_import\": true, \"presence_roundtrips\": 3, \"cli_version\": \"passed\"}"
+      ],
+      "errors": []
+    },
+    {
+      "id": 123356419940,
+      "name": "minimum-dependencies",
+      "conclusion": "success",
+      "testSummary": [
+        "Successfully set up CPython (3.11.17)",
+        "81 passed, 29 deselected in 11.63s"
+      ],
+      "errors": []
+    },
+    {
+      "id": 123356419944,
+      "name": "core (ubuntu-latest, 3.14)",
+      "conclusion": "success",
+      "testSummary": [
+        "Successfully set up CPython (3.14.9)",
+        "81 passed, 29 deselected in 8.37s"
+      ],
+      "errors": []
+    },
+    {
+      "id": 123356419966,
+      "name": "core (ubuntu-latest, 3.11)",
+      "conclusion": "success",
+      "testSummary": [
+        "Successfully set up CPython (3.11.17)",
+        "81 passed, 29 deselected in 11.89s"
+      ],
+      "errors": []
+    },
+    {
+      "id": 123356419991,
+      "name": "evaluation-offline",
+      "conclusion": "success",
+      "testSummary": [
+        "Successfully set up CPython (3.12.15)",
+        "29 passed, 81 deselected in 9.16s",
+        "\"live_requests_made\": 0,"
+      ],
+      "errors": []
+    },
+    {
+      "id": 123356420033,
+      "name": "core (ubuntu-latest, 3.12)",
+      "conclusion": "success",
+      "testSummary": [
+        "Successfully set up CPython (3.12.15)",
+        "81 passed, 29 deselected in 11.39s"
+      ],
+      "errors": []
+    },
+    {
+      "id": 123356420039,
+      "name": "core (ubuntu-latest, 3.13)",
+      "conclusion": "success",
+      "testSummary": [
+        "Successfully set up CPython (3.13.17)",
+        "81 passed, 29 deselected in 12.22s"
+      ],
+      "errors": []
+    },
+    {
+      "id": 123356420075,
+      "name": "core (windows-latest, 3.13)",
+      "conclusion": "success",
+      "testSummary": [
+        "Successfully set up CPython (3.13.16)",
+        "81 passed, 29 deselected in 11.26s"
+      ],
+      "errors": []
+    },
+    {
+      "id": 123356420156,
+      "name": "core (windows-latest, 3.11)",
+      "conclusion": "success",
+      "testSummary": [
+        "Successfully set up CPython (3.11.9)",
+        "81 passed, 29 deselected in 12.39s"
+      ],
+      "errors": []
+    },
+    {
+      "id": 123356420157,
+      "name": "core (windows-latest, 3.15)",
+      "conclusion": "success",
+      "testSummary": [
+        "Successfully set up CPython (3.15.1)",
+        "81 passed, 29 deselected in 11.73s"
+      ],
+      "errors": []
+    },
+    {
+      "id": 123356420159,
+      "name": "core (windows-latest, 3.12)",
+      "conclusion": "success",
+      "testSummary": [
+        "Successfully set up CPython (3.12.10)",
+        "81 passed, 29 deselected in 13.95s"
+      ],
+      "errors": []
+    },
+    {
+      "id": 123356420164,
+      "name": "core (windows-latest, 3.14)",
+      "conclusion": "success",
+      "testSummary": [
+        "Successfully set up CPython (3.14.9)",
+        "81 passed, 29 deselected in 13.60s"
+      ],
+      "errors": []
+    },
+    {
+      "id": 123356420220,
+      "name": "core (ubuntu-latest, 3.15)",
+      "conclusion": "success",
+      "testSummary": [
+        "Successfully set up CPython (3.15.1)",
+        "81 passed, 29 deselected in 12.15s"
+      ],
+      "errors": []
+    }
+  ],
+  "new_live_inference_calls": 0,
+  "scope": "Hosted CI checkpoint after fixing job-level runner context. Subsequent documentation commits require their own green run."
+}

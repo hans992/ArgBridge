@@ -67,4 +67,6 @@ python scripts/check_release.py dist
 
 On shells that do not expand globs, pass the two distribution filenames explicitly to Twine. Install the wheel in a fresh environment, then run `python -I scripts/smoke_installed.py` to verify the installed import and CLI. Do not use an editable installation for that check.
 
-CI additionally targets Windows/Linux CPython 3.11–3.15 and minimum runtime dependency versions. It is read-only, pins actions by commit and has no package-upload or deployment job. The release candidate's local verification and pending hosted CI status are recorded separately.
+CI additionally tests Windows/Linux CPython 3.11–3.15 and minimum runtime dependency versions. It is read-only, pins actions by commit and has no package-publication or deployment job. The build job uploads temporary test artifacts only. [Hosted results](CI_RESULTS.md) are recorded separately from local verification.
+
+For workflow changes, also run `actionlint -shellcheck= -pyflakes= .github/workflows/ci.yml` using the separately installed official actionlint tool (1.7.12 was verified). YAML parsing alone does not validate GitHub expression contexts. This optional developer tool is not a package dependency; disabling its shellcheck/pyflakes integrations limits the check to actionlint's built-in validation.

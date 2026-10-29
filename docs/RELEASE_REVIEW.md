@@ -2,6 +2,8 @@
 
 Prepared 29 October 2026 from research snapshot `a9cd459c8cd58624af8102e1dc714c81678a79f9`. This is a fresh source review with executable regression checks, not an external security audit or an independently authored model evaluation. The candidate is suitable for experimental engineering review; production suitability is not established.
 
+Hosted verification followed the local review: all 13 CI jobs passed at commit `3f4eadf` after correcting a workflow startup error. [CI results and exact scope](CI_RESULTS.md). The local preparation records below retain their original observations.
+
 ## Scope and disposition
 
 The review covered the complete runtime, public exports, CLI, schema subset, transformation/validation boundaries, evaluation harness, tests, dependency metadata, packaging and examples. It also reproduced the historical offline benchmark from a disposable checkout. The useful scope remains a bounded, reusable transport codec for strict tools whose original contracts need member presence or typed maps. It is not a general converter, agent framework or model-accuracy improvement.
@@ -40,7 +42,7 @@ The schema subset is deliberately narrow. Decimal `multipleOf` inherits Python/j
 
 The new OpenAI example defaults to an offline request preview. Its paid path requires two explicit flags, user-supplied credentials and uses zero automatic retries. It returns a decoded proposal without applying it. The SDK transport mock verifies request/response plumbing only. **No new paid inference was executed for this release.** Historical acceptance and model scores are tied to the old frozen experiment, not this new example.
 
-Windows/Linux CPython 3.11–3.15 CI is configured with read-only permissions and pinned action revisions; workflow and issue-form YAML parse checks passed. Hosted CI has not run for this candidate. macOS, alternate interpreters and every allowed dependency combination remain unverified.
+Windows/Linux CPython 3.11–3.15 CI uses read-only permissions and pinned action revisions. Initial YAML parsing missed an invalid GitHub expression context; the first hosted run failed before jobs started. Moving tokenizer-cache setup into a runner step fixed it. All 13 jobs then passed, and actionlint 1.7.12 also passed locally with optional shellcheck/pyflakes integration disabled. macOS, alternate interpreters and every allowed dependency combination remain unverified.
 
 The wheel was built from the source distribution, passed strict Twine metadata checks and installed into a fresh environment with only its declared runtime dependencies. Isolated import, CLI version and all three quickstart operations passed. The extracted source distribution also passed 81 core tests. `scripts/check_release.py` checks package contents, retained license files and common credential/local-path patterns. These checks do not upload anything; publication remains a separate owner decision.
 
@@ -48,4 +50,4 @@ The MIT license is retained for owner approval. Runtime dependencies are not ven
 
 ## Follow-up criteria
 
-The next useful evidence is hosted compatibility results, independently supplied synthetic workflows and a separately approved comparison against the revised manual control. Further encoding changes need round-trip regressions and measured schema/token effects before any new model evaluation. There is no evidence-based reason to add a dashboard or broaden unsupported schema semantics casually.
+The next useful evidence is independently supplied synthetic workflows and a separately approved comparison against the revised manual control. Further encoding changes need round-trip regressions and measured schema/token effects before any new model evaluation. There is no evidence-based reason to add a dashboard or broaden unsupported schema semantics casually.
