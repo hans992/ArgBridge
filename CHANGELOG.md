@@ -1,8 +1,8 @@
 # Changelog
 
-## 0.1.0a1 — unreleased candidate
+## 0.1.0a1 — experimental alpha (2026-10-29)
 
-Initial developer-facing alpha, prepared from the published research snapshot.
+Initial developer-facing experimental alpha, released as the [v0.1.0a1 GitHub prerelease](https://github.com/hans992/ArgBridge/releases/tag/v0.1.0a1). The package version remains `0.1.0a1`; this is not a PyPI publication or a production-readiness claim.
 
 ### Fixed
 

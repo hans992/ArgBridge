@@ -12,7 +12,7 @@ For a patch-style API, these can be three different operations:
 
 Making every optional field nullable can collapse the first two cases. ArgBridge compiles a supported subset of JSON Schema into an explicit wire representation and reconstructs the original JSON after validation. Typed dictionaries are transported as key/value entries, with duplicate keys rejected.
 
-**Experimental alpha: 0.1.0a1 release candidate.** The candidate is available on the `release/0.1.0a1` branch; it is not yet a published PyPI package. [Hosted CI passed all 13 jobs](docs/CI_RESULTS.md), including Windows/Linux Python 3.11–3.15. No production-readiness or model-accuracy improvement is claimed.
+**Experimental alpha: [v0.1.0a1 GitHub prerelease](https://github.com/hans992/ArgBridge/releases/tag/v0.1.0a1).** Download the wheel, source distribution, source archive and SHA-256 checksums from the release page. The package version is `0.1.0a1`; it is not published to PyPI. [CI](https://github.com/hans992/ArgBridge/actions?query=branch%3Amain) covers 13 jobs, including Windows/Linux Python 3.11–3.15. No production-readiness or model-accuracy improvement is claimed.
 
 [API](docs/API.md) · [Supported schemas](docs/SUPPORTED_SCHEMAS.md) · [Architecture](docs/ARCHITECTURE.md) · [Compatibility](docs/COMPATIBILITY.md) · [MIT license](LICENSE)
 
